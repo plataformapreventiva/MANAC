@@ -1,0 +1,8 @@
+TODO
+
+* Inventario Nacional de Viviendas (INV) es 2016 ver qué covariables nos interesaría incluir del inventario.
+
+* Comparar resultados con CUIS para ver si hay diferencia en la recolección de los datos.
+
+* Covariables a nivel persona del CPV2010: cruces por grupo de edad y sexo.
+
