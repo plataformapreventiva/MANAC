@@ -1,0 +1,29 @@
+# dotenv
+.env
+
+# Porquerías de MacOS
+.DS_Store
+
+# Bases de datos
+*.db
+
+# Archivos de datos
+*.xlsx
+*.dat
+*.csv
+*.tsv
+*.psv
+*.sqlite
+*.doc*
+*.xls*
+*.pdf
+*.ppt*
+*.sqlite
+*.swp
+
+# Basura de Rstudio
+**/.Rhistory
+**/.RData
+**/.Rproj.user
+.Rproj.user
+
