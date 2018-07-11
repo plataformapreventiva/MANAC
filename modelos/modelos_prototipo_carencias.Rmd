@@ -79,5 +79,5 @@ fit <- sampling(mod_carencia, data = datos, chains = 3,
 ```{r}
 #library(shinystan)
 # launch_shinystan(fit)
-rstan::summary(fit, pars = c("beta", "alpha", "beta_0", "sigma", "sigma_mun"))$summary
+rstan::summary(fit, pars = c("beta", "alpha", "beta_0", "rho", "sigma_mun"))$summary
 ```
