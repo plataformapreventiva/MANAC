@@ -72,7 +72,7 @@ datos <- list(n = nrow(x_hogar),
              x_municipio = x_mun,
              municipio = geo_id)
 fit <- sampling(mod_ingreso, data = datos, chains = 3, 
-                cores = 3, iter = 800, warmup = 400)
+                cores = 3, iter = 800, warmup = 400, control=list(max_treedepth=12))
 ```
 
 ```{r}
