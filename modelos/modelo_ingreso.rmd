@@ -7,16 +7,15 @@ output: html_document
 library(tidyverse)
 library(rstan)
 rm(list = ls())
-ruta_trabajo <- setwd('C:/Users/H11765/Documents/Proyecto/modelo_ingreso')
 ```
 
 ## Datos a nivel hogar
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
-base_ingreso_hog <- read_csv('base_ingreso.csv')
+base_ingreso_hog <- read_csv('../datos/base_hogar.csv')
 ```
 
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
-# selección de conjunto de entrenamiento y prueba general
+# selecci?n de conjunto de entrenamiento y prueba general
 set.seed(1234)
 muestra <- round(nrow(base_ingreso_hog) * 0.80, 0)
 ind <- sample(c(1:nrow(base_ingreso_hog)), muestra)
@@ -26,7 +25,7 @@ rm('muestra', 'ind')
 ```
 
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=FALSE, eval=FALSE}
-# selección de conjunto de entrenamiento y prueba considerando muestra de todas las entidades
+# selecci?n de conjunto de entrenamiento y prueba considerando muestra de todas las entidades
 set.seed(1234)
 base_ingreso_hog$entidad <- as.numeric(substr(base_ingreso_hog$ubica_geo, 1, 2))
 for(i in 1:32){
@@ -115,7 +114,7 @@ x1_hogar_prueba <- model.matrix(~ - 1 + tenen + drenaje_1 + elect_1 + combus + e
 ```
 ## Datos a nivel municipio
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
-base_ingreso_mun <- read_csv('base_municipio.csv')
+base_ingreso_mun <- read_csv('../datos/base_municipio.csv')
 
 base_ingreso_mun <- base_ingreso_mun %>%
                     select(ubica_geo, 
@@ -175,7 +174,7 @@ for (i in 1:length(sel)) {
     ci90[i,] <- quantile(post[,sel[i]], prob = c(0.05, 0.95), names = FALSE)
 }
 
-# gráfica
+# gr?fica
 log_ingreso <- log(1 + ingreso)
 plot(0, type= 'n', xlim = c(0,length(log_ingreso)), ylim = range(post[, sel]),
      xlab = 'hogar', ylab = 'ingreso', main = "")
