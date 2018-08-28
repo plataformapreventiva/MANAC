@@ -8,6 +8,35 @@ library(tidyverse)
 library(rstan)
 rm(list = ls())
 ```
+## Datos a nivel municipio
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
+base_ingreso_mun <- read_csv('../datos/base_municipio.csv')
+```
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
+cat_mun <- as.data.frame(unique(base_ingreso_mun$ubica_geo))
+names(cat_mun)[1] <- 'ubica_geo'
+cat_mun <- cat_mun %>%
+  mutate(geo_id = as.numeric(factor(cat_mun$ubica_geo))) %>%
+  arrange(geo_id)
+write_csv(x = cat_mun, path = '../datos/catalogo_mun2.csv')
+```
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
+base_ingreso_mun <- inner_join(base_ingreso_mun, cat_mun, by = 'ubica_geo')
+```
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
+base_ingreso_mun <- base_ingreso_mun %>%
+  arrange(geo_id)
+```
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
+x_mun <- model.matrix(~ -1 + per_med + uni_med + tasa_alf + ind_agu + ind_dre+
+                      ind_ele + ind_des_hum + per_doc + esc_edu + uni_eco + 
+                      factor(conapo),
+                      data = base_ingreso_mun)
+```
 
 ## Datos a nivel hogar
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
@@ -15,21 +44,14 @@ base_ingreso_hog <- read_csv('../datos/base_hogar.csv')
 ```
 
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
-cat_mun <- as.data.frame(unique(base_ingreso_hog$ubica_geo))
-names(cat_mun)[1] <- 'ubica_geo'
-cat_mun <- cat_mun %>%
-  mutate(geo_id = as.numeric(factor(cat_mun$ubica_geo))) %>%
-  arrange(geo_id)
-write_csv(x = cat_mun, path = '../datos/catalogo_mun.csv')
-
-base_ingreso_hog <- inner_join(base_ingreso_hog, cat_mun, by = 'ubica_geo')
+base_ingreso_hog <- left_join(base_ingreso_hog, cat_mun, by = 'ubica_geo')
 ```
 
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
 # selección de conjunto de entrenamiento
 set.seed(12345)
-muestra <- round(nrow(cat_mun) * 0.60, 0)
-ind <- sample(c(1:nrow(cat_mun)), muestra)
+muestra <- round(nrow(base_ingreso_hog) * 0.60, 0)
+ind <- sample(c(1:nrow(base_ingreso_hog)), muestra)
 base_ingreso_hog <- base_ingreso_hog %>%
   mutate(muestra = ifelse(geo_id %in% ind, 1, 0)) %>%
   arrange(desc(muestra))
@@ -97,26 +119,6 @@ x_hogar_entre <- model.matrix(~ - 1 + factor(tenen) + drenaje_1 + elect_1 +
 nrow(x_hogar_entre)
 ncol(x_hogar_entre)
 ```
-## Datos a nivel municipio
-```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
-base_ingreso_mun <- read_csv('../datos/base_municipio.csv')
-```
-
-```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
-base_ingreso_mun <- inner_join(base_ingreso_mun, cat_mun, by = 'ubica_geo')
-```
-
-```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
-base_ingreso_mun <- base_ingreso_mun %>%
-  arrange(geo_id)
-```
-
-```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
-x_mun <- model.matrix(~ -1 + per_med + uni_med + tasa_alf + ind_agu + ind_dre+
-                      ind_ele + ind_des_hum + per_doc + esc_edu + uni_eco + 
-                      factor(conapo),
-                      data = base_ingreso_mun)
-```
 
 ## Modelo
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
@@ -137,6 +139,19 @@ datos_mod <- list(n = nrow(x_hogar_entre),
               x_hogar_f = x_hogar,
               municipio_f = geo_id,
               in_sample = muestra)
+```
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=FALSE, eval=FALSE}
+ingreso1 <- datos1_entre_hog$ingcor
+geo_id <- as.numeric(factor(datos1_entre_hog$ubica_geo))
+datos1_mod <- list(n = nrow(x1_hogar_entre),
+              n_mun = nrow(x_mun),
+              mh = ncol(x1_hogar_entre),
+              mm = ncol(x_mun),
+              ingreso = ingreso1,
+              x_hogar = x1_hogar_entre,
+              x_municipio = x_mun,
+              municipio = geo_id)
 ```
 
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE, cache=TRUE}
