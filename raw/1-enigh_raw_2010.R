@@ -103,6 +103,11 @@ concentrado_2 <- concentrado %>%
   select(-folioviv,-foliohog)
 
 # hogares (nivel vivienda)
+# Reglas de faltantes por lógica de cuestionario
+# cua_coc = 2 -> coc_duer = NA
+# dis_agua %in% 3:6 -> dot_agua = NA
+# excus = 2 -> sanitario_compartido = NA & adm_ag = NA
+# elect = 5 -> focos = NA
 
 hogares <- read.dbf("datos/CONEVAL_2010/Bases de datos/hogares.dbf")
 
@@ -116,7 +121,7 @@ hogares_2 <- hogares %>%
          cua_coc=CUA_COC,
          coc_duer=COC_DUER,
          dormi=DORMI,
-         cuart=CUART,
+         cuart=CUART, # número de cuartos
          dis_agua=DIS_AGUA,
          dot_agua=DOT_AGUA,
          excus=EXCUS,
@@ -136,7 +141,11 @@ hogares_2 <- hogares %>%
          televisor=EQH4_N) %>%
   mutate(hogar_id = paste0(folioviv,'-',foliohog)) %>%
   select(-folioviv,-foliohog) %>%
-  mutate_all(.funs = funs(ifelse(is.na(.),-1,.)))
+  mutate(coc_duer = ifelse(is.na(coc_duer) & cua_coc == 2, 'NC', coc_duer),
+         dot_agua = ifelse(is.na(dot_agua) & dis_agua %in% 3:6, 'NC', dot_agua),
+         sanitario_compartido = ifelse(is.na(sanitario_compartido) & excus == 2, 'NC', sanitario_compartido),
+         adm_ag = ifelse(is.na(adm_ag) & excus == 2, 'NC', adm_ag),
+         focos = ifelse(is.na(focos) & elect == 5, 'NC', focos))
 
 # carencias (nivel persona)
 
