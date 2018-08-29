@@ -28,7 +28,7 @@ base_ingreso_hog <- inner_join(base_ingreso_hog, cat_mun, by = 'ubica_geo')
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
 # selección de conjunto de entrenamiento
 set.seed(12345)
-muestra <- round(nrow(cat_mun) * 0.60, 0)
+muestra <- round(nrow(cat_mun) * 0.20, 0)
 ind <- sample(c(1:nrow(cat_mun)), muestra)
 base_ingreso_hog <- base_ingreso_hog %>%
   mutate(muestra = ifelse(geo_id %in% ind, 1, 0)) %>%
@@ -142,12 +142,45 @@ datos_mod <- list(n = nrow(x_hogar_entre),
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE, cache=TRUE}
 rstan_options(auto_write = TRUE)
 options(mc.cores = parallel::detectCores())
-mod_ingreso <- stan_model(file = '../modelos/mod_ingreso.stan')
+mod_ingreso0 <- stan_model(file = '../modelos/mod_ingreso0.stan')
 ```
 
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE, cache=TRUE}
-fit <- sampling(mod_ingreso, data = datos_mod, iter = 1000, chains = 2, warmup = 400)
+fit <- sampling(mod_ingreso0, data = datos_mod, iter = 1000, chains = 2, warmup = 250)
 print(fit, pars = c('beta_0', 'beta', 'alpha'), digits = 1)
+```
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=FALSE}
+ext_fit <- extract(fit)
+post_fit <- as.matrix(fit)
+# extraer parámetros
+betha_mun_raw <- ext_fit$betha_mun_raw
+sigma_mun <- ext_fit$sigma_mun
+alpha0 <- apply(ext_fit$alpha, 2, mean)
+sel_alpha <- grep('alpha', colnames(post_fit))
+alpha_pos <- colMeans(post_fit[,sel_alpha])
+betha_0 <- ext_fit$betha_0
+sel_betha <- grep('betha', colnames(post_fit))
+betha_pos <- colMeans(post_fit[,sel_betha])
+
+gen_quantities_r <- function(x_mun, x_hogar){
+  betha_mun <- sample(betha_mun_raw, 1) * sample(sigma_mun) + x_mun * alpha_pos
+  reg_pred <- mean(betha_0) + x_hogar * betha_pos + betha_mun
+  sigma_pred <- sample(sigma_pos)
+  log_ing <- normal(reg_pred, sigma_pred)
+  return(log_ing)
+}
+
+set.seed(1234)
+pred_log_ing <- rep(0, nrow(x_hogar)-nrow(x_hogar_entre)) 
+for(i in (nrow(x_hogar_entre)+1):nrow(x_hogar)){
+  muni <- base_ingreso_hog[i, geo_id]
+  pred_log_ing[i] <- gen_quantities_r(x_hogar[i,], x_mun[muni,])
+}
+
+log_ingreso_test <- log(1 + base_ingres_hog$ingcor[muestra == 0])
+# accuracy
+mean(pred_log_ing == log_ingreso_test)
 ```
 
 ```{r, error=FALSE, warning=FALSE, message=FALSE, echo=TRUE, eval=TRUE}
