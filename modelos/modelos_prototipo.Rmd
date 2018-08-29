@@ -20,10 +20,14 @@ mod_ingreso <- stan_model(file = "./src/ingreso.stan")
 ```{r}
 enigh_sample <- sample_n(enigh_2010, 20000)
 
+DataExplorer::plot_missing(enigh_2010)
+
 ## quitar faltantes ########
 
-datos_crudos_x <- enigh_sample %>% select(hogar_id, ubica_geo, jefe_sexo, pisos, dis_agua, excus, drenaje, servicio_celular, servicio_internet, automovil, tam_hog, n_ocup, conapo, tam_loc, ingcor,
-                                          maxnved) 
+datos_crudos_x <- enigh_sample %>% 
+  select(hogar_id, ubica_geo, jefe_sexo, pisos, dis_agua, excus, drenaje,
+    servicio_celular, servicio_internet, automovil, tam_hog, n_ocup, conapo,
+    tam_loc, ingcor, maxnved) 
 datos_crudos_x <- drop_na(datos_crudos_x)
 ingreso <- datos_crudos_x$ingcor
 
@@ -45,10 +49,9 @@ datos_limpios_x <- datos_crudos_x %>%
 datos_limpios_x <- datos_limpios_x %>%
   mutate(max_ed = ifelse(is.na(max_ed), 1, max_ed)) %>%
   mutate(max_ed_faltante = as.numeric(is.na(max_ed)))
-x_hogar <- model.matrix(~ - 1 + jefe_sexo+ pisos + dis_agua + excus + drenaje+ servicio_celular +
-                          servicio_internet + automovil + tam_hog + n_ocup +
-                          max_ed + max_ed_faltante + n_ocup*max_ed,
-                        data = datos_limpios_x)
+x_hogar <- model.matrix(~ - 1 + jefe_sexo+ pisos + dis_agua + excus + drenaje +
+    servicio_celular + servicio_internet + automovil + tam_hog + n_ocup +
+    max_ed + max_ed_faltante + n_ocup*max_ed, data = datos_limpios_x)
   #as.matrix(datos_limpios_x %>% 
   #                     select(-hogar_id, -geo_id, -ubica_geo, -conapo, -tam_loc, -ingcor))
 geo_id <- datos_limpios_x$geo_id
