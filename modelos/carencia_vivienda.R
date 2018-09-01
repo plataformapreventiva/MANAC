@@ -4,7 +4,7 @@ library(tidyverse)
 library(rstan)
 library(emdbook)
 
-enigh_2010 <- read_csv("datos/enigh_final.csv")
+enigh_2010 <- read_csv("datos/base_final.csv")
 
 # Modelo de carencias 
 mod_carencia <- stan_model(file = "modelos/src/carencia_binomial.stan")
@@ -26,9 +26,9 @@ enigh_test <- setdiff(enigh_muestra, enigh_train)
 
 limpia_datos <- function(enigh_crudo){
   aux <- enigh_crudo %>%
-    select(hogar_id, ubica_geo, jefe_sexo, pisos, dis_agua, excus, 
+    select(hogar_id, ubica_geo=ubica_geo.y, jefe_sexo, pisos, dis_agua, excus, 
            drenaje, servicio_celular, servicio_internet, automovil, 
-           tam_hog, n_ocup, conapo, tam_loc, ingcor, maxnved) %>%
+           tam_hog, n_ocup, conapo, tam_loc=tam_loc.y, ingcor=ingcor.y, maxnved) %>%
     ## quitar faltantes ########
     drop_na() %>%
     mutate(
@@ -45,7 +45,8 @@ limpia_datos <- function(enigh_crudo){
       n_ocup = log(1+n_ocup),
       max_ed = log(maxnved)) %>%
     mutate(max_ed = ifelse(is.na(max_ed), 1, max_ed)) %>%
-    mutate(max_ed_faltante = as.numeric(is.na(max_ed)))
+    mutate(max_ed_faltante = as.numeric(is.na(max_ed)),
+           max_ed = ifelse(max_ed <= 0, 0, max_ed))
   
   aux %>% # Codificacion de niveles en covariables de municipio
     mutate(conapo = as.integer(conapo),
@@ -122,7 +123,7 @@ datos_train <- list(n = nrow(x_train_hogar),
               n_personas = num_carencias_train_x$total_personas,
               n_carencia = num_carencias_train_x$n_personas)
 
-# Ajuste de parametros
+# Ajuste de parametros: 35 minutos
 fit <- sampling(mod_carencia, data = datos_train, chains = 3, 
                 cores = 12, iter = 800, warmup = 400, control=list(max_treedepth=12))
 
@@ -166,7 +167,7 @@ sims_rho <- as.matrix(fit, pars = c("rho")); dim(sims_rho)
 
 # Individuo 1
 ind_hog_1 <- x_train_hogar[1,]; length(ind_hog_1)
-ind_mun_1 <- x_mun_train[1,]; length(ind_mun_1)
+ind_mun_1 <- x_vmun_train[1,]; length(ind_mun_1)
 ind_mun_ind_1 <- municipios_train$geo_id[1]
 ind_n_pers_1 <- num_carencias_train_x$total_personas[1]
 # beta_mun = beta_mun_raw * sigma_mun + x_municipio * alpha
