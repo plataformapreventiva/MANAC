@@ -1,0 +1,136 @@
+---
+title: "semana"
+author: "Teresa Ortiz"
+date: "8/2/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(rstan)
+enigh_2010 <- read_csv("../datos/enigh_final.csv")
+head(enigh_2010)
+DataExplorer::plot_missing(enigh_2010)
+```
+
+Modelo ingreso corriente
+
+```{r, message=FALSE, warning=FALSE}
+mod_ingreso_pred <- stan_model(file = "./src/ingreso_prediccion.stan")
+```
+
+Variables a considerar y selección de muestra.
+
+```{r}
+enigh_vars <- enigh_2010 %>% 
+  select(hogar_id, ubica_geo, jefe_sexo, pisos, dis_agua, excus, drenaje,
+    servicio_celular, servicio_internet, automovil, tam_hog, n_ocup, conapo,
+    tam_loc, ingcor, maxnved) %>% 
+  na.omit()
+
+# seleccionar muestra (municipios y hogares)
+set.seed(182791)
+in_sample_mun_ids <- sample(unique(enigh_vars$ubica_geo), 100)
+in_sample_ids <- enigh_vars %>% 
+  filter(ubica_geo %in% in_sample_mun_ids) %>% 
+  sample_n(5000) %>% 
+  pull(hogar_id)
+
+```
+
+
+```{r}
+# Recibe: 
+# datos_enigh: los datos enigh y un vector con los hogares seleccionados en la muestra 
+# de entrenamiento identificados por la varibale hogares_id
+# Regresa en forma de lista:
+# datos_modelo: lista para usar directamente en Stan, define datos del modelo.
+# ind_mun: índice de clave de municipio e índice correspondiente en modelo.
+preparar_datos <- function(datos_enigh, in_sample_ids){
+  datos_limpios_hogar <- datos_enigh %>%
+    mutate(
+      jefe_sexo = jefe_sexo,
+      pisos = as.numeric(pisos != 1),
+      dis_agua = as.numeric(dis_agua == 1),
+      excus = as.numeric(excus == 1),
+      drenaje = as.numeric(drenaje!=5),
+      servicio_celular =  as.numeric(servicio_celular == 1),
+      servicio_internet = as.numeric(servicio_internet == 1),
+      automovil = as.numeric(automovil == 1),
+      tam_hog = log(1+tam_hog),
+      n_ocup = log(1+n_ocup),
+      max_ed = log(maxnved), 
+      max_ed = ifelse(is.na(max_ed), 1, max_ed), 
+      in_sample = hogar_id %in% in_sample_ids
+      ) %>% 
+    arrange(desc(in_sample))
+  x_hogar <- model.matrix(~ jefe_sexo + pisos + dis_agua + excus + 
+      drenaje + servicio_celular + servicio_internet + automovil + tam_hog +
+      n_ocup + max_ed + n_ocup * max_ed + factor(tam_loc), 
+      data = datos_limpios_hogar)
+  x_hogar <- x_hogar[, colnames(x_hogar) != "(Intercept)"]
+  datos_mun <- datos_limpios_hogar %>% 
+    group_by(ubica_geo) %>% 
+    summarise(
+      conapo = first(conapo), 
+      tam_mun = floor(median(tam_loc)), 
+      in_sample_mun = sum(in_sample) > 0
+      ) %>%
+      ungroup() %>% 
+    mutate(
+      geo_id = str_c(1 - in_sample_mun, ubica_geo),
+      geo_id = as.numeric(factor(geo_id))
+      ) %>% 
+    arrange(desc(in_sample_mun), geo_id)
+  x_mun <- model.matrix(~ factor(tam_mun) * factor(conapo), 
+    data = datos_mun)
+  x_mun <- x_mun[, colnames(x_mun) != "(Intercept)"]
+  ind_mun <- select(datos_mun, ubica_geo, geo_id, in_sample_mun)
+  datos_limpios_hogar <- datos_limpios_hogar %>% 
+    left_join(ind_mun, by = "ubica_geo")
+  n <- sum(datos_limpios_hogar$in_sample)
+  n_mun = sum(datos_mun$in_sample_mun)
+  datos_modelo <- list(
+    n = n,
+    n_mun = n_mun,
+    mh = ncol(x_hogar),
+    mm = ncol(x_mun),
+    ingreso = datos_limpios_hogar$ingcor[1:n],
+    x_hogar = x_hogar[1:n, ],
+    x_municipio = x_mun[1:n_mun, ],
+    municipio = datos_limpios_hogar$geo_id[1:n], 
+    N_mun = nrow(x_mun), 
+    x_todos_municipio = x_mun, 
+    in_sample_mun = as.numeric(datos_mun$in_sample_mun)
+    )
+  return(list(datos_modelo = datos_modelo, ind_mun = ind_mun))
+}
+
+datos <- preparar_datos(datos_enigh = enigh_vars, in_sample_ids = in_sample_ids)
+
+fit <- sampling(mod_ingreso_pred, data = datos$datos_modelo, chains = 3, 
+  cores = 2, iter = 700, warmup = 400, control=list(max_treedepth=13))
+rstan::summary(fit, pars = c("beta", "alpha", "beta_0", "sigma", "sigma_mun"))$summary
+
+betas <- extract(fit, "beta_out")[[1]]
+betas_stats <- data_frame(geo_id = 1:ncol(betas), medias = apply(betas, 2, mean), 
+  desv_est = apply(betas, 2, sd)) %>% 
+  left_join(datos$ind_mun)
+
+betas_stats %>% 
+  group_by(in_sample_mun) %>% 
+  summarise(mean(desv_est))
+
+ggplot(betas_stats, aes(x = reorder(geo_id, medias), y = medias, 
+  ymin = medias - desv_est, 
+  ymax = medias + desv_est, color = in_sample_mun))  +
+  geom_pointrange(alpha = 0.5, size = 0.2)
+
+
+
+```
+
