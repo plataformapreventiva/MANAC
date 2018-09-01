@@ -6,7 +6,7 @@ Amanda: 1) diagnósticos de modelo, 2) resúmenes a nivel municipio y AGEB.
 
 Andreu: 0) Subir la base de datos final, 1) Base municipios con covariables y agregar índices, 2) diagnósticos de modelo, 3) Resúmenes a nivel municipio y ageb. Comparar agebs con coneval 2010.
 
-Teresa: 1) Crear variable train/test en datos, 2) Agregar beta_mun a generated quantities.
+Teresa: 1) Diagnosticar modelos de ingreso. 2) Guía de diagnósticos.
 
 
 
