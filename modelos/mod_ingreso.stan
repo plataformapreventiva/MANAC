@@ -45,16 +45,15 @@ model {
 }
 
 generated quantities {
-  real log_reps;
+  vector[n_f] log_reps;
   vector[n_f] reg_pred_f;
   for(i in 1:n_f){
     if(in_sample[i] == 1){
-      log_reps += normal_rng(reg_pred[i], sigma);
+      log_reps[i] = normal_rng(reg_pred[i], sigma);
     } 
     else {
-      //beta_mun = beta_mun_raw * sigma_mun + x_municipio * alpha;
       reg_pred_f = beta_0 + x_hogar_f * beta + beta_mun[municipio_f];
-      log_reps += normal_rng(reg_pred_f[i], sigma);
+      log_reps[i] = normal_rng(reg_pred_f[i], sigma);
     }
   }
 }
