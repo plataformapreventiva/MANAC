@@ -165,9 +165,12 @@ sims_rho <- as.matrix(fit, pars = c("rho")); dim(sims_rho)
 
 # Predecir para entrenamiento
 
+# Individuo 1 stan
+ind_1_stan <- as.numeric(as.matrix(fit, pars = "reg_prob[1]"))
+
 # Individuo 1
 ind_hog_1 <- x_train_hogar[1,]; length(ind_hog_1)
-ind_mun_1 <- x_vmun_train[1,]; length(ind_mun_1)
+ind_mun_1 <- x_mun_train[1,]; length(ind_mun_1)
 ind_mun_ind_1 <- municipios_train$geo_id[1]
 ind_n_pers_1 <- num_carencias_train_x$total_personas[1]
 # beta_mun = beta_mun_raw * sigma_mun + x_municipio * alpha
@@ -182,20 +185,20 @@ b <- a * ((1 - reg_prob)/reg_prob)
 prob = a / (a + b)
 theta = a + b
 
-beta_binomial_sim <- function(i, N){
+beta_binomial_sim <- function(i){
   p <- prob[i]
   th <- theta[i]
-  rbetabinom(n = 1, prob = p, theta = th, size = N)
+  as.integer(rbetabinom(n = 1, prob = p, theta = th, size = ind_n_pers_1))
 }
 
-y_sim <- map_int(.x = length(prob), .f = beta_binomial_sim, N = sims_beta_mun_raw)
+y_sim <- map_int(.x = 1:length(prob), .f = beta_binomial_sim)
+table(y_sim)
 
-
-
-
+# Forma matricial
 aux <- (t(sims_beta_mun_raw) %*% sims_sigma_mun) 
 aux2 <- (x_mun_train %*% t(sims_alpha))
 
+View(sims_beta_mun_raw[,municipios_train$geo_id])
 
 
 
