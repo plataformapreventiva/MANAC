@@ -43,8 +43,9 @@ faltantes %>%
   filter(num_missing == 1253)
 ```
 
-Notamos que los faltantes de la tabla anterior pertenecen a 1253 hogares, 
-repartidos en 401 municipios.
+Notamos que los faltantes de la tabla anterior pertenecen a 1,253 hogares, 
+repartidos en 401 municipios, la siguiente tabla indica los municipios con mayor
+porcentaje de faltantes.
 
 ```{r}
 enigh_faltantes <- enigh_2010 %>% 
@@ -52,7 +53,9 @@ enigh_faltantes <- enigh_2010 %>%
   
 enigh_faltantes %>% 
   group_by(ubica_geo) %>% 
-  summarise(porcent_faltantes = 100 * sum(faltante) / n()) %>%
+  summarise(
+    porcent_faltantes = 100 * sum(faltante) / n(), 
+    n_faltantes = sum(faltante)) %>%
   filter(porcent_faltantes > 0) %>% 
   arrange(desc(porcent_faltantes)) %>% 
   top_n(20, porcent_faltantes)
@@ -66,6 +69,13 @@ de ingresos lanzando un dado y negándose a contestar si observa un 6. En el
 caso MCAR eliminar las observaciones con faltantes no genera un sesgo en la 
 inferencia.
 
+Arriba observamos que hay municipios con alto porcentaje de faltantes lo que nos
+hace pensar que no estamos en el caso MCAR. Evaluemos la hipótesis de MCAR 
+mediante un modelo de regresión logística donde la variable respuesta es si hay 
+faltante o no en cada hogar y agregamos covaribales sexo del jefe de familia, 
+total de personas en el hogar, índice de rezago educativo y número de personas
+ocupadas:
+
 ```{r}
 faltante_fit <- glm((faltante == 0) ~ jefe_sexo + jefe_edad + total_personas + 
     ic_rezedu + n_ocup, data = enigh_faltantes, family = binomial(link = "logit"))
@@ -73,13 +83,10 @@ faltante_fit <- glm((faltante == 0) ~ jefe_sexo + jefe_edad + total_personas +
 summary(faltante_fit)
 ```
 
+Los resultados de la regresión no soportan la hipótesis de faltantes MCAR.
 
 Por ahora se eliminarán los faltantes, sin embargo, en corridas futuras se 
-propone:
-
-1. En el caso de faltantes por lógica de cuestionario se creará un nuevo código.
-
-2. El 2% de faltantes adicionales se eliminará.
+recodificarán los faltantes para no perder hogares.
 
 ### Variables en modelo
 
@@ -133,7 +140,7 @@ El código incluye una sección de *generated quantities* donde:
 1) Se estiman los parámetros de los municipios que no entraron en la muestra.
 
 2) Se predice el ingreso en los hogares que tampoco están en muestra. 
-muestra, en el modelo final este proceso se lleva a cabo en R.
+En el modelo final este proceso se llevará a cabo en R.
 
 Para ajustar el modelo, creamos una función que lee la tabla de datos y regresa 
 una lista con los datos a usar en el ajuste del modelo.
@@ -157,10 +164,10 @@ preparar_datos <- function(datos_enigh, in_sample_ids, covs_mun = TRUE){
       servicio_celular =  as.numeric(servicio_celular == 1),
       servicio_internet = as.numeric(servicio_internet == 1),
       automovil = as.numeric(automovil == 1),
-      tam_hog = log(1+tam_hog),
-      n_ocup = log(1+n_ocup),
-      max_ed = log(maxnved), 
-      max_ed = ifelse(is.na(max_ed), 1, max_ed), 
+      tam_hog = tam_hog - mean(tam_hog),
+      n_ocup = n_ocup - mean(n_ocup),
+      max_ed = maxnved - mean(maxnved), 
+      # max_ed = ifelse(is.na(max_ed), 1, max_ed), 
       in_sample = hogar_id %in% in_sample_ids
       ) %>% 
     arrange(desc(in_sample))
@@ -187,7 +194,8 @@ preparar_datos <- function(datos_enigh, in_sample_ids, covs_mun = TRUE){
     data = datos_mun)
     x_mun <- x_mun[, colnames(x_mun) != "(Intercept)"]
   } else {
-    x_mun <- model.matrix(~ -1 + factor(conapo), data = datos_mun)  
+    x_mun <- model.matrix(~ 1 + factor(conapo), data = datos_mun)  
+    x_mun <- x_mun[, colnames(x_mun) != "(Intercept)"]
   }
   ind_mun <- select(datos_mun, ubica_geo, geo_id, in_sample_mun)
   datos_limpios_hogar <- datos_limpios_hogar %>% 
@@ -219,9 +227,9 @@ preparar_datos <- function(datos_enigh, in_sample_ids, covs_mun = TRUE){
 datos <- preparar_datos(datos_enigh = enigh_vars, in_sample_ids = in_sample_ids, 
   covs_mun = FALSE)
 
-# fit <- sampling(mod_ingreso_pred, data = datos$datos_modelo, chains = 2, 
-#   cores = 2, iter = 700, warmup = 400, control=list(max_treedepth=13))
-# save(fit, file = "fit.RData")
+fit <- sampling(mod_ingreso_pred, data = datos$datos_modelo, chains = 2,
+  cores = 2, iter = 700, warmup = 400, control=list(max_treedepth=13))
+save(fit, file = "fit.RData")
 load("fit.RData")
 ```
 
@@ -353,6 +361,17 @@ embargo, en este ajuste no tuvimos divergencias.
 
 ```{r}
 mcmc_areas(posterior, regex_pars = c("alpha"), prob = 0.8) +
+  ggtitle("Distribuciones posteriores", "con medianas e intervalos de 80%")
+```
+
+```{r}
+mcmc_areas(posterior, regex_pars = c("alpha"), prob = 0.8) +
+  ggtitle("Distribuciones posteriores", "con medianas e intervalos de 80%")
+```
+
+
+```{r}
+mcmc_areas(posterior, pars = c("beta_0"), prob = 0.8) +
   ggtitle("Distribuciones posteriores", "con medianas e intervalos de 80%")
 ```
 
@@ -638,6 +657,4 @@ shinystan::launch_shinystan(fit)
 rstan::summary(fit, pars = c("log_reps"))$summary
 
 ```
-
-
 
