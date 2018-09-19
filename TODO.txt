@@ -1,5 +1,14 @@
 TODO
 
+Tareas 30 agosto
+
+Andreu: 0) Revisar bases de datos ¿porqué no coinciden hogares?, 1) Lista de variables para estimar cada carencia.
+2) diagnósticos de modelo, 3) Resúmenes a nivel municipio. 
+
+Teresa: 1) Scripts correr ingreso en INEGI, 2) Analizar PSUs homogéneos y no.
+
+
+
 * Inventario Nacional de Viviendas (INV) es 2016 ver qué covariables nos interesaría incluir del inventario.
 
 * Comparar resultados con CUIS para ver si hay diferencia en la recolección de los datos.
