@@ -60,7 +60,7 @@ crear_matrices <- function(datos){
       drenaje = as.numeric(drenaje!=5),
       servicio_celular =  as.numeric(servicio_celular == 1),
       servicio_internet = as.numeric(servicio_internet == 1),
-      automovil = as.numeric(automovil >= 1),
+      automovil = as.numeric(automovil == 1),
       tam_hog = tam_hog - media_tam_hog,
       n_ocup = n_ocup - media_tam_hog,
       max_ed = maxnved - media_maxnved, 
