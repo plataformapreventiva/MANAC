@@ -79,11 +79,12 @@ preparar_datos <- function(datos_enigh, covs_mun = TRUE){
     log_ingreso = log(datos_limpios_hogar$ingcor + 1)))
 }
 
-datos <- preparar_datos(datos_enigh = sample_n(enigh_2010, 200), covs_mun = FALSE)
+datos <- preparar_datos(datos_enigh = enigh_2010, covs_mun = FALSE)
 
 fit <- sampling(mod_ingreso, data = datos$datos_modelo, chains = 2,
-  cores = 2, iter = 700, warmup = 400, control=list(max_treedepth=13))
+  cores = 2, iter = 1500, warmup = 1000, control=list(max_treedepth=13))
 
+save(fit, file = "fit.RData")
 extract_fit <- extract(fit, permuted = TRUE)
 beta_mun <- extract_fit$beta_mun
 beta_0 <- extract_fit$beta_0 
