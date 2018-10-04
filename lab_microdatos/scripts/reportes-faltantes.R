@@ -1,15 +1,16 @@
 # escribe tablas donde para cada var_agrupar (AGEB o municipio) se reporta el 
 # número de faltantes por variable y el número de hogares con al menos un 
 # faltante.
-reporte_faltantes <- function(datos_viviendas, var_agrupar,
-  archivo_reporte) {
-  faltantes_var <- datos_viviendas %>% 
-    group_by(!!enquo(var_agrupar)) %>% 
+reporte_faltantes <- function(datos_viviendas, archivo_reporte) {
+  datos_viviendas <- datos_viviendas %>% 
+    mutate(MUN_AGEB = paste0(MUN, AGEB))
+  faltantes_var <- datos_viviendas  %>% 
+    group_by(MUN_AGEB) %>% 
     summarise_all(funs(falta = sum(is.na(.)))) 
   datos_viviendas$viviendas_na <- apply(datos_viviendas, 1, function(x) 
     sum(is.na(x)) > 0)
   faltantes_viviendas <- datos_viviendas %>% 
-    group_by(!!enquo(var_agrupar)) %>% 
+    group_by(MUN_AGEB) %>% 
     summarise(n_viviendas_na = sum(viviendas_na), n_viviendas = n())
   tab_faltantes <- faltantes_var %>% 
     left_join(faltantes_viviendas)
@@ -17,17 +18,17 @@ reporte_faltantes <- function(datos_viviendas, var_agrupar,
 }
 
 # variables de base viviendas
-reporte_faltantes_viviendas <- function(datos_viviendas, var_agrupar, 
+reporte_faltantes_viviendas <- function(path_viviendas,  
   archivo_reporte = "../salidas/faltantes.csv") {
   datos_viviendas <- foreign::read.dbf(path_viviendas)
   viviendas <- datos_viviendas %>%
     select(ID_VIV, ENT, MUN, AGEB, PISOS, DISAGU, SERSAN, DRENAJE, AUTOPROP, 
       CELULAR, INTERNET, NUMPERS, TAMLOC4)
-  reporte_faltantes(viviendas, !!enquo(var_agrupar), archivo_reporte)
+  reporte_faltantes(viviendas, archivo_reporte)
 }
 
 # variables de base personas
-reporte_faltantes_personas <- function(path_personas, var_agrupar,
+reporte_faltantes_personas <- function(path_personas, 
   archivo_reporte = "../salidas/faltantes.csv") {
   datos_personas <- foreign::read.dbf(path_personas)
   personas_recod <- datos_personas %>%
@@ -53,6 +54,5 @@ reporte_faltantes_personas <- function(path_personas, var_agrupar,
       indigena = 1 * any(HLENGUA == 1)) %>%
     select(AGEB, MUN, id_viv, jefe_sexo, n_ocup, maxnved, indigena) %>%
     ungroup()
-  reporte_faltantes(datos_vivienda = personas_recod, !!enquo(var_agrupar),
-    archivo_reporte)
+  reporte_faltantes(datos_vivienda = personas_recod, archivo_reporte)
 }

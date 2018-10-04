@@ -22,18 +22,19 @@ predice_mun <- function(mat, path_save = "../salidas/") {
   write_csv(simulaciones_ageb, path = paste0(path_save, mun, ".csv"))
 }
 
-procesa_mun <- function(viviendas, personas, mun) {
+procesa_mun <- function(viviendas, personas, mun, path_salida = "../salidas/") {
   viviendas_mun <- filter(viviendas, MUN == mun)
   personas_mun <- filter(personas, MUN == mun)
   mat <- preparar_datos(datos_vivienda = viviendas_mun, 
     datos_persona = personas_mun)
-  predice_mun(mat)
+  predice_mun(mat, path_save = path_salida)
 }
 
-procesa_edo <- function(path_viviendas, path_personas) {
+procesa_edo <- function(path_viviendas, path_personas, 
+  path_salida = "../salidas/") {
   edo_viviendas <- foreign::read.dbf(path_viviendas)
   edo_personas <- foreign::read.dbf(path_personas)
   muns <- unique(edo_viviendas$MUN)
   map(muns, ~procesa_mun(viviendas = edo_viviendas, personas = edo_personas, 
-    mun = .))
+    mun = ., path_save = path_salida))
 }
