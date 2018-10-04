@@ -1,0 +1,2458 @@
+cve_muni,tamloc_mediana,grado_marginacion
+01001,2,Muy bajo
+01002,1.5,Bajo
+01003,2,Bajo
+01004,1.5,Bajo
+01005,2,Muy bajo
+01006,2,Muy bajo
+01007,2,Bajo
+01008,1.5,Bajo
+01009,1.5,Bajo
+01010,1.5,Bajo
+01011,2,Muy bajo
+02001,2.5,Muy bajo
+02002,2.5,Muy bajo
+02003,2,Muy bajo
+02004,2.5,Muy bajo
+02005,2,Muy bajo
+03001,2,Bajo
+03002,1.5,Bajo
+03003,2,Muy bajo
+03008,2.5,Muy bajo
+03009,1.5,Muy bajo
+04001,1.5,Medio
+04002,2,Muy bajo
+04003,2,Muy bajo
+04004,2,Medio
+04005,1.5,Medio
+04006,1.5,Alto
+04007,1.5,Alto
+04008,1.5,Medio
+04009,2,Medio
+04010,1.5,Alto
+04011,1.5,Alto
+05001,1,Bajo
+05002,3,Muy bajo
+05003,2,Muy bajo
+05004,1.5,Bajo
+05005,1,Bajo
+05006,2,Muy bajo
+05007,1.5,Bajo
+05008,1,Bajo
+05009,2,Bajo
+05010,2.5,Muy bajo
+05011,1.5,Bajo
+05012,1,Bajo
+05013,1,Bajo
+05014,1.5,Medio
+05015,1,Medio
+05016,1,Bajo
+05017,2,Muy bajo
+05018,3,Muy bajo
+05019,1.5,Muy bajo
+05020,2,Muy bajo
+05021,1.5,Muy bajo
+05022,2,Muy bajo
+05023,1.5,Medio
+05024,2,Bajo
+05025,3,Muy bajo
+05026,1,Bajo
+05027,2.5,Muy bajo
+05028,2,Muy bajo
+05029,1,Muy bajo
+05030,3,Muy bajo
+05031,2,Muy bajo
+05032,2,Muy bajo
+05033,2,Bajo
+05034,1.5,Bajo
+05035,2,Muy bajo
+05036,1.5,Medio
+05037,1.5,Muy bajo
+05038,1.5,Muy bajo
+06001,2,Medio
+06002,3,Muy bajo
+06003,1.5,Bajo
+06004,1.5,Bajo
+06005,1.5,Muy bajo
+06006,1.5,Medio
+06007,2,Muy bajo
+06008,1.5,Bajo
+06009,2,Bajo
+06010,3,Muy bajo
+07001,1.5,Alto
+07002,1.5,Alto
+07003,1.5,Alto
+07004,1.5,Muy alto
+07005,1.5,Muy alto
+07006,1.5,Alto
+07007,1.5,Muy alto
+07008,1.5,Alto
+07009,2,Medio
+07010,1,Muy alto
+07011,1,Alto
+07012,2,Alto
+07013,1.5,Alto
+07014,1.5,Muy alto
+07015,2,Alto
+07016,1.5,Medio
+07017,2,Medio
+07018,1.5,Alto
+07019,2.5,Medio
+07020,1.5,Alto
+07021,1.5,Alto
+07022,1,Muy alto
+07023,1.5,Muy alto
+07024,1.5,Muy alto
+07025,1.5,Alto
+07026,1.5,Muy alto
+07027,2,Medio
+07028,1.5,Alto
+07029,1.5,Alto
+07030,1.5,Alto
+07031,1.5,Muy alto
+07032,1.5,Alto
+07033,1,Alto
+07034,2,Alto
+07035,1.5,Alto
+07036,1,Alto
+07037,1.5,Alto
+07038,1,Alto
+07039,1.5,Muy alto
+07040,2,Alto
+07041,1.5,Alto
+07042,1.5,Alto
+07043,1.5,Alto
+07044,1.5,Alto
+07045,1,Muy alto
+07046,1.5,Alto
+07047,1.5,Alto
+07048,1.5,Medio
+07049,1,Alto
+07050,1,Alto
+07051,2,Alto
+07052,2,Muy alto
+07053,1,Alto
+07054,1.5,Alto
+07055,1.5,Medio
+07056,1,Muy alto
+07057,2,Alto
+07058,2,Muy alto
+07059,2,Muy alto
+07060,1.5,Muy alto
+07061,2,Alto
+07062,1.5,Alto
+07063,1,Medio
+07064,1.5,Muy alto
+07065,2,Alto
+07066,1.5,Muy alto
+07067,1,Muy alto
+07068,1.5,Alto
+07069,2,Alto
+07070,1,Alto
+07071,1.5,Alto
+07072,1.5,Alto
+07073,1.5,Alto
+07074,2,Bajo
+07075,2,Muy alto
+07076,1.5,Muy alto
+07077,1.5,Muy alto
+07078,3,Bajo
+07079,1.5,Alto
+07080,1.5,Muy alto
+07081,1.5,Muy alto
+07082,1,Muy alto
+07083,1.5,Alto
+07084,1,Alto
+07085,1.5,Alto
+07086,2,Medio
+07087,1.5,Alto
+07088,1,Alto
+07089,2,Bajo
+07090,1,Alto
+07091,1.5,Medio
+07092,1.5,Alto
+07093,1.5,Muy alto
+07094,2,Alto
+07096,1.5,Muy alto
+07097,2,Medio
+07098,1.5,Muy alto
+07099,1.5,Alto
+07100,1.5,Muy alto
+07101,2,Muy bajo
+07102,1.5,Alto
+07103,1.5,Alto
+07104,1.5,Alto
+07105,1.5,Alto
+07106,2,Alto
+07107,1.5,Alto
+07108,2,Alto
+07109,2,Muy alto
+07110,1.5,Muy alto
+07111,1.5,Muy alto
+07112,1.5,Muy alto
+07113,1,Alto
+07114,1.5,Alto
+07115,1,Muy alto
+07116,1,Alto
+07117,1.5,Alto
+07118,1.5,Muy alto
+07119,1,Muy alto
+08001,1.5,Bajo
+08002,2,Muy bajo
+08003,1.5,Bajo
+08004,1.5,Muy bajo
+08005,1.5,Bajo
+08006,1,Bajo
+08007,1,Muy alto
+08008,1,Muy alto
+08009,1.5,Alto
+08010,1.5,Bajo
+08011,2,Muy bajo
+08012,1,Alto
+08013,1.5,Bajo
+08014,1,Medio
+08015,1,Bajo
+08016,1,Bajo
+08017,2,Muy bajo
+08018,1,Bajo
+08019,3,Muy bajo
+08020,1,Muy alto
+08021,2,Muy bajo
+08022,1,Bajo
+08023,1,Bajo
+08024,1,Bajo
+08025,1.5,Bajo
+08026,1,Bajo
+08027,1.5,Muy alto
+08028,1.5,Bajo
+08029,1.5,Muy alto
+08030,1,Alto
+08031,1.5,Bajo
+08032,3,Muy bajo
+08033,1,Alto
+08034,1.5,Bajo
+08035,1.5,Bajo
+08036,2,Muy bajo
+08037,2,Muy bajo
+08038,1,Bajo
+08039,1,Bajo
+08040,2,Bajo
+08041,1,Muy alto
+08042,1,Bajo
+08043,1,Bajo
+08044,1.5,Bajo
+08045,2,Muy bajo
+08046,1,Muy alto
+08047,1,Alto
+08048,1.5,Bajo
+08049,1,Alto
+08050,2.5,Muy bajo
+08051,1,Medio
+08052,2,Muy bajo
+08053,1,Bajo
+08054,1,Bajo
+08055,1.5,Bajo
+08056,1,Medio
+08057,1,Medio
+08058,1,Bajo
+08059,1.5,Muy bajo
+08060,1.5,Muy bajo
+08061,1,Medio
+08062,1.5,Bajo
+08063,1,Medio
+08064,1,Medio
+08065,1,Muy alto
+08066,1,Muy alto
+08067,1,Medio
+09002,5,Muy bajo
+09003,5,Muy bajo
+09004,3,Muy bajo
+09005,5,Muy bajo
+09006,5,Muy bajo
+09007,5,Muy bajo
+09008,3,Muy bajo
+09009,2,Bajo
+09010,3,Muy bajo
+09011,2.5,Muy bajo
+09012,2.5,Muy bajo
+09013,3,Muy bajo
+09014,5,Muy bajo
+09015,5,Muy bajo
+09016,5,Muy bajo
+09017,5,Muy bajo
+10001,1.5,Medio
+10002,1,Alto
+10003,1,Alto
+10004,1.5,Bajo
+10005,2,Muy bajo
+10006,1,Alto
+10007,2,Muy bajo
+10008,2,Bajo
+10009,1.5,Medio
+10010,1,Bajo
+10011,1,Bajo
+10012,2,Muy bajo
+10013,1.5,Bajo
+10014,1,Muy alto
+10015,1.5,Medio
+10016,1.5,Medio
+10017,1.5,Bajo
+10018,1.5,Bajo
+10019,1,Muy alto
+10020,1.5,Bajo
+10021,1.5,Medio
+10022,1.5,Bajo
+10023,2,Alto
+10024,1.5,Medio
+10025,1,Alto
+10026,1.5,Medio
+10027,1,Alto
+10028,1.5,Medio
+10029,1,Bajo
+10030,1,Medio
+10031,1.5,Medio
+10032,2,Bajo
+10033,1.5,Medio
+10034,1,Muy alto
+10035,1.5,Medio
+10036,1.5,Bajo
+10037,1,Alto
+10038,2,Muy bajo
+10039,1.5,Bajo
+11001,2,Medio
+11002,2,Bajo
+11003,2,Bajo
+11004,2,Bajo
+11005,2,Bajo
+11006,1,Alto
+11007,2,Muy bajo
+11008,1.5,Medio
+11009,2,Medio
+11010,1.5,Medio
+11011,2,Bajo
+11012,1.5,Medio
+11013,1.5,Medio
+11014,2.5,Medio
+11015,2.5,Muy bajo
+11016,1.5,Bajo
+11017,2,Muy bajo
+11018,2,Bajo
+11019,1.5,Alto
+11020,2.5,Muy bajo
+11021,2,Muy bajo
+11022,1.5,Medio
+11023,2,Medio
+11024,1.5,Medio
+11025,2,Bajo
+11026,2,Medio
+11027,2,Muy bajo
+11028,2,Bajo
+11029,1.5,Alto
+11030,2,Medio
+11031,2.5,Bajo
+11032,2,Bajo
+11033,2,Medio
+11034,1,Alto
+11035,2,Medio
+11036,1.5,Medio
+11037,2,Bajo
+11038,1.5,Bajo
+11039,1.5,Medio
+11040,1,Alto
+11041,2.5,Bajo
+11042,2,Bajo
+11043,1.5,Medio
+11044,2,Bajo
+11045,1,Alto
+11046,2,Medio
+12001,2,Bajo
+12002,1.5,Muy alto
+12003,1.5,Muy alto
+12004,1.5,Muy alto
+12005,1.5,Alto
+12006,1.5,Alto
+12007,2,Alto
+12008,1.5,Muy alto
+12009,1,Muy alto
+12010,1.5,Muy alto
+12011,2,Medio
+12012,2,Muy alto
+12013,1.5,Alto
+12014,1.5,Medio
+12015,1.5,Bajo
+12016,1,Muy alto
+12017,1.5,Medio
+12018,1.5,Alto
+12019,1.5,Muy alto
+12020,1.5,Muy alto
+12021,1.5,Alto
+12022,1.5,Alto
+12023,1.5,Alto
+12024,1,Alto
+12025,1.5,Muy alto
+12026,1,Alto
+12027,1.5,Alto
+12028,2,Muy alto
+12029,2,Bajo
+12030,1.5,Alto
+12031,1,Muy alto
+12032,1.5,Muy alto
+12033,1.5,Alto
+12034,2,Medio
+12035,2,Bajo
+12036,1.5,Muy alto
+12037,1.5,Alto
+12038,2,Bajo
+12039,1.5,Medio
+12040,1.5,Alto
+12041,1,Muy alto
+12042,1.5,Muy alto
+12043,1.5,Muy alto
+12044,1.5,Alto
+12045,1.5,Muy alto
+12046,2,Alto
+12047,1,Muy alto
+12048,2,Medio
+12049,1.5,Medio
+12050,2,Bajo
+12051,1.5,Muy alto
+12052,1.5,Muy alto
+12053,1.5,Alto
+12054,1.5,Muy alto
+12055,2,Medio
+12056,1.5,Alto
+12057,2,Alto
+12058,2,Alto
+12059,1.5,Alto
+12060,1,Alto
+12061,2,Alto
+12062,1.5,Muy alto
+12063,1,Muy alto
+12064,1.5,Alto
+12065,1,Muy alto
+12066,2,Alto
+12067,1.5,Alto
+12068,1.5,Alto
+12069,1.5,Muy alto
+12070,1.5,Alto
+12071,1.5,Muy alto
+12072,1,Muy alto
+12073,1.5,Muy alto
+12074,1.5,Muy alto
+12075,2,Alto
+12076,1,Muy alto
+12077,1.5,Alto
+12078,1.5,Muy alto
+12079,1,Muy alto
+12080,1.5,Alto
+12081,1,Muy alto
+13001,1,Medio
+13002,1.5,Alto
+13003,2,Bajo
+13004,1,Alto
+13005,1.5,Bajo
+13006,1,Medio
+13007,1.5,Medio
+13008,2,Bajo
+13009,1.5,Bajo
+13010,1.5,Muy bajo
+13011,1,Alto
+13012,1.5,Medio
+13013,1.5,Muy bajo
+13014,1.5,Alto
+13015,1,Alto
+13016,2,Medio
+13017,1,Alto
+13018,1.5,Alto
+13019,1,Medio
+13020,1,Alto
+13021,1.5,Muy bajo
+13022,1.5,Bajo
+13023,1.5,Bajo
+13024,1,Medio
+13025,1.5,Muy alto
+13026,1,Alto
+13027,1.5,Muy alto
+13028,2,Medio
+13029,1.5,Bajo
+13030,2,Bajo
+13031,1.5,Alto
+13032,1.5,Medio
+13033,1,Alto
+13034,1,Alto
+13035,1,Medio
+13036,1,Medio
+13037,1.5,Alto
+13038,1,Alto
+13039,1.5,Muy bajo
+13040,1,Muy alto
+13041,2,Muy bajo
+13042,1.5,Medio
+13043,1,Muy alto
+13044,1,Medio
+13045,1,Medio
+13046,1.5,Alto
+13047,1,Muy alto
+13048,2,Muy bajo
+13049,1,Alto
+13050,2,Muy bajo
+13051,2,Muy bajo
+13052,1.5,Bajo
+13053,1.5,Alto
+13054,1.5,Bajo
+13055,1,Medio
+13056,2,Bajo
+13057,1.5,Medio
+13058,1.5,Medio
+13059,1.5,Medio
+13060,1,Alto
+13061,2,Muy bajo
+13062,1,Alto
+13063,2,Muy bajo
+13064,1,Bajo
+13065,1.5,Muy bajo
+13066,1.5,Bajo
+13067,1.5,Bajo
+13068,1,Alto
+13069,2,Muy bajo
+13070,1.5,Bajo
+13071,1,Muy alto
+13072,1.5,Muy bajo
+13073,1.5,Alto
+13074,1.5,Bajo
+13075,1.5,Muy bajo
+13076,2,Muy bajo
+13077,2,Muy bajo
+13078,1,Muy alto
+13079,1,Alto
+13080,1.5,Muy alto
+13081,2,Bajo
+13082,1.5,Bajo
+13083,1.5,Bajo
+13084,1.5,Medio
+14001,1.5,Bajo
+14002,1.5,Muy bajo
+14003,2,Muy bajo
+14004,1.5,Medio
+14005,1.5,Muy bajo
+14006,2,Muy bajo
+14007,1.5,Bajo
+14008,2,Bajo
+14009,1.5,Muy bajo
+14010,1.5,Bajo
+14011,1,Medio
+14012,1,Bajo
+14013,2,Muy bajo
+14014,1.5,Bajo
+14015,2,Muy bajo
+14016,1.5,Medio
+14017,1.5,Bajo
+14018,2,Bajo
+14019,1,Muy alto
+14020,1.5,Medio
+14021,1.5,Bajo
+14022,2,Bajo
+14023,2.5,Muy bajo
+14024,1.5,Bajo
+14025,1.5,Bajo
+14026,1.5,Bajo
+14027,1.5,Alto
+14028,1,Medio
+14029,1.5,Medio
+14030,2,Muy bajo
+14031,1,Alto
+14032,1.5,Medio
+14033,1.5,Bajo
+14034,1,Muy bajo
+14035,2,Bajo
+14036,1.5,Muy bajo
+14037,2,Muy bajo
+14038,1,Medio
+14039,5,Muy bajo
+14040,1.5,Medio
+14041,1.5,Bajo
+14042,1.5,Alto
+14043,1.5,Bajo
+14044,1.5,Muy bajo
+14045,1.5,Medio
+14046,2,Bajo
+14047,2,Bajo
+14048,1.5,Medio
+14049,1,Medio
+14050,2,Bajo
+14051,1.5,Muy bajo
+14052,1.5,Bajo
+14053,2,Bajo
+14054,1.5,Bajo
+14055,2,Bajo
+14056,1,Alto
+14057,1.5,Bajo
+14058,1.5,Muy bajo
+14059,1.5,Bajo
+14060,1.5,Bajo
+14061,1,Muy alto
+14062,1,Medio
+14063,2.5,Muy bajo
+14064,1.5,Bajo
+14065,1.5,Bajo
+14066,1.5,Bajo
+14067,2.5,Muy bajo
+14068,1.5,Medio
+14069,1,Medio
+14070,2,Muy bajo
+14071,1,Alto
+14072,1.5,Bajo
+14073,2,Muy bajo
+14074,1.5,Muy bajo
+14075,1.5,Bajo
+14076,1,Medio
+14077,1.5,Bajo
+14078,2,Bajo
+14079,1.5,Bajo
+14080,1,Medio
+14081,1,Medio
+14082,2,Muy bajo
+14083,2,Muy bajo
+14084,1.5,Bajo
+14085,2,Bajo
+14086,1.5,Bajo
+14087,1.5,Medio
+14088,1.5,Bajo
+14089,1,Bajo
+14090,1.5,Muy bajo
+14091,2,Bajo
+14092,1.5,Bajo
+14093,2,Muy bajo
+14094,2,Muy bajo
+14095,1.5,Bajo
+14096,1.5,Bajo
+14097,2.5,Muy bajo
+14098,2.5,Muy bajo
+14099,1.5,Medio
+14100,1.5,Bajo
+14101,2.5,Muy bajo
+14102,1.5,Bajo
+14103,1.5,Bajo
+14104,1,Medio
+14105,1.5,Bajo
+14106,1,Alto
+14107,1.5,Bajo
+14108,2,Bajo
+14109,1.5,Bajo
+14110,1.5,Muy bajo
+14111,1.5,Bajo
+14112,1.5,Medio
+14113,1.5,Medio
+14114,1.5,Bajo
+14115,1.5,Medio
+14116,2,Muy bajo
+14117,1.5,Medio
+14118,1.5,Bajo
+14119,2,Bajo
+14120,3,Muy bajo
+14121,2,Muy bajo
+14122,1.5,Alto
+14123,1.5,Medio
+14124,2,Bajo
+14125,1.5,Bajo
+15001,1.5,Alto
+15002,2,Muy bajo
+15003,1.5,Alto
+15004,1.5,Alto
+15005,2,Medio
+15006,1.5,Bajo
+15007,1.5,Medio
+15008,1.5,Alto
+15009,2,Muy bajo
+15010,1.5,Muy bajo
+15011,2,Bajo
+15012,1.5,Muy bajo
+15013,3,Muy bajo
+15014,2,Bajo
+15015,1.5,Medio
+15016,1.5,Bajo
+15017,1.5,Bajo
+15018,1.5,Muy bajo
+15019,2,Muy bajo
+15020,3,Muy bajo
+15021,1.5,Medio
+15022,1.5,Bajo
+15023,2,Muy bajo
+15024,2,Muy bajo
+15025,2.5,Muy bajo
+15026,1.5,Medio
+15027,1.5,Muy bajo
+15028,1.5,Bajo
+15029,3,Muy bajo
+15030,2,Muy bajo
+15031,3,Bajo
+15032,1.5,Alto
+15033,3,Muy bajo
+15034,1.5,Bajo
+15035,2,Muy bajo
+15036,1.5,Bajo
+15037,2.5,Muy bajo
+15038,1,Bajo
+15039,2.5,Muy bajo
+15040,2,Bajo
+15041,1,Alto
+15042,1.5,Medio
+15043,2,Bajo
+15044,2.5,Muy bajo
+15045,1.5,Medio
+15046,1.5,Bajo
+15047,1.5,Medio
+15048,1.5,Bajo
+15049,1.5,Medio
+15050,2,Bajo
+15051,2,Muy bajo
+15052,1.5,Medio
+15053,2,Muy bajo
+15054,2.5,Muy bajo
+15055,1.5,Muy bajo
+15056,1.5,Alto
+15057,2,Muy bajo
+15058,3,Muy bajo
+15059,1.5,Bajo
+15060,2,Muy bajo
+15061,1.5,Bajo
+15062,2,Muy bajo
+15063,1.5,Medio
+15064,1.5,Medio
+15065,1.5,Bajo
+15066,1,Alto
+15067,1.5,Bajo
+15068,2,Bajo
+15069,1.5,Bajo
+15070,2.5,Bajo
+15071,1.5,Medio
+15072,1.5,Muy bajo
+15073,1.5,Muy bajo
+15074,1.5,Alto
+15075,1.5,Muy bajo
+15076,2,Muy bajo
+15077,1,Medio
+15078,1,Medio
+15079,1.5,Medio
+15080,1.5,Alto
+15081,2.5,Muy bajo
+15082,2,Alto
+15083,1.5,Muy bajo
+15084,1.5,Bajo
+15085,1.5,Medio
+15086,1.5,Medio
+15087,1.5,Medio
+15088,1.5,Medio
+15089,1.5,Bajo
+15090,2,Bajo
+15091,2,Muy bajo
+15092,2,Muy bajo
+15093,1.5,Bajo
+15094,1.5,Bajo
+15095,2,Muy bajo
+15096,2,Muy bajo
+15097,1.5,Alto
+15098,1.5,Bajo
+15099,2,Muy bajo
+15100,2,Bajo
+15101,1.5,Bajo
+15102,1,Bajo
+15103,2,Muy bajo
+15104,2,Muy bajo
+15105,1.5,Alto
+15106,2.5,Muy bajo
+15107,1.5,Bajo
+15108,2,Muy bajo
+15109,3,Muy bajo
+15110,2,Bajo
+15111,1.5,Alto
+15112,1.5,Medio
+15113,1.5,Medio
+15114,1.5,Alto
+15115,2,Muy bajo
+15116,1.5,Medio
+15117,1.5,Alto
+15118,2,Muy bajo
+15119,1.5,Alto
+15120,2.5,Muy bajo
+15121,2.5,Muy bajo
+15122,3,Bajo
+15123,1.5,Alto
+15124,1.5,Alto
+15125,1.5,Bajo
+16001,1.5,Medio
+16002,1.5,Medio
+16003,1.5,Medio
+16004,1.5,Bajo
+16005,1.5,Medio
+16006,2,Bajo
+16007,1,Medio
+16008,1,Muy alto
+16009,2,Medio
+16010,1.5,Medio
+16011,1.5,Bajo
+16012,1.5,Medio
+16013,1.5,Muy alto
+16014,1.5,Medio
+16015,1.5,Alto
+16016,1.5,Medio
+16017,1.5,Medio
+16018,1.5,Medio
+16019,1.5,Bajo
+16020,1.5,Medio
+16021,1.5,Alto
+16022,1.5,Bajo
+16023,1.5,Bajo
+16024,1.5,Alto
+16025,1.5,Alto
+16026,1,Alto
+16027,1,Alto
+16028,1.5,Bajo
+16029,1.5,Alto
+16030,1.5,Bajo
+16031,1,Alto
+16032,1.5,Medio
+16033,1.5,Medio
+16034,2,Medio
+16035,1.5,Alto
+16036,1.5,Bajo
+16037,1.5,Medio
+16038,2,Medio
+16039,1.5,Medio
+16040,1.5,Medio
+16041,1.5,Alto
+16042,1.5,Bajo
+16043,2,Bajo
+16044,1.5,Bajo
+16045,2,Muy bajo
+16046,1.5,Medio
+16047,1.5,Medio
+16048,1,Medio
+16049,1.5,Alto
+16050,2,Medio
+16051,1.5,Muy bajo
+16052,2.5,Muy bajo
+16053,2,Muy bajo
+16054,1,Medio
+16055,2,Medio
+16056,1.5,Alto
+16057,1.5,Muy alto
+16058,1.5,Bajo
+16059,1,Alto
+16060,1.5,Bajo
+16061,1.5,Alto
+16062,1.5,Bajo
+16063,1.5,Medio
+16064,1.5,Alto
+16065,2,Medio
+16066,2,Bajo
+16067,1.5,Medio
+16068,2,Bajo
+16069,2.5,Muy bajo
+16070,1.5,Bajo
+16071,2,Medio
+16072,1.5,Medio
+16073,1.5,Medio
+16074,1.5,Bajo
+16075,2,Bajo
+16076,2,Muy bajo
+16077,1.5,Alto
+16078,1.5,Bajo
+16079,1.5,Medio
+16080,1.5,Medio
+16081,1,Muy alto
+16082,2,Bajo
+16083,1.5,Medio
+16084,1.5,Alto
+16085,2,Bajo
+16086,1.5,Bajo
+16087,1.5,Bajo
+16088,1.5,Bajo
+16089,2,Bajo
+16090,1.5,Medio
+16091,1.5,Bajo
+16092,1.5,Muy alto
+16093,1.5,Alto
+16094,1.5,Bajo
+16095,1.5,Bajo
+16096,1.5,Muy alto
+16097,1.5,Alto
+16098,1.5,Medio
+16099,1.5,Alto
+16100,1.5,Medio
+16101,1,Muy alto
+16102,2,Muy bajo
+16103,1.5,Bajo
+16104,1.5,Medio
+16105,1.5,Bajo
+16106,2,Bajo
+16107,2,Bajo
+16108,2,Bajo
+16109,1,Bajo
+16110,2,Bajo
+16111,1.5,Medio
+16112,2,Bajo
+16113,1.5,Bajo
+17001,1.5,Bajo
+17002,1.5,Medio
+17003,2,Medio
+17004,1.5,Bajo
+17005,1,Medio
+17006,2,Muy bajo
+17007,2,Muy bajo
+17008,2,Muy bajo
+17009,1.5,Bajo
+17010,1.5,Bajo
+17011,2,Muy bajo
+17012,2,Muy bajo
+17013,1.5,Bajo
+17014,1.5,Bajo
+17015,1.5,Medio
+17016,1.5,Medio
+17017,2,Bajo
+17018,2,Bajo
+17019,1.5,Medio
+17020,1.5,Bajo
+17021,1.5,Medio
+17022,1.5,Bajo
+17023,1.5,Alto
+17024,2,Bajo
+17025,2,Bajo
+17026,1.5,Bajo
+17027,1.5,Medio
+17028,2,Bajo
+17029,2,Bajo
+17030,2,Bajo
+17031,2,Muy bajo
+17032,1.5,Bajo
+17033,1.5,Medio
+18001,2,Medio
+18002,1.5,Muy bajo
+18003,1.5,Bajo
+18004,2,Bajo
+18005,1.5,Muy alto
+18006,2,Muy bajo
+18007,1.5,Medio
+18008,2,Muy bajo
+18009,1.5,Muy alto
+18010,1.5,Bajo
+18011,1.5,Medio
+18012,1.5,Bajo
+18013,1.5,Bajo
+18014,1.5,Medio
+18015,2,Bajo
+18016,1.5,Bajo
+18017,2,Muy bajo
+18018,2,Bajo
+18019,1,Alto
+18020,2,Muy bajo
+19001,1,Bajo
+19002,1,Bajo
+19003,1,Bajo
+19004,2,Muy bajo
+19005,2,Bajo
+19006,2,Muy bajo
+19007,1.5,Alto
+19008,1.5,Bajo
+19009,2,Muy bajo
+19010,1.5,Muy bajo
+19011,1.5,Muy bajo
+19012,2,Muy bajo
+19013,1.5,Bajo
+19014,1.5,Alto
+19015,1,Bajo
+19016,1,Bajo
+19017,1.5,Medio
+19018,2.5,Muy bajo
+19019,3,Muy bajo
+19020,1.5,Bajo
+19021,3,Muy bajo
+19022,1.5,Bajo
+19023,1,Bajo
+19024,1,Alto
+19025,2,Muy bajo
+19026,2,Muy bajo
+19027,1,Bajo
+19028,1,Bajo
+19029,1.5,Muy bajo
+19030,1,Medio
+19031,3,Muy bajo
+19032,1.5,Muy bajo
+19033,2.5,Muy bajo
+19034,1.5,Muy bajo
+19035,1,Muy bajo
+19036,1,Alto
+19037,1.5,Bajo
+19038,2,Muy bajo
+19039,3,Muy bajo
+19040,1,Bajo
+19041,1.5,Muy bajo
+19042,1,Bajo
+19043,1,Alto
+19044,2,Muy bajo
+19045,1.5,Muy bajo
+19046,5,Muy bajo
+19047,2,Muy bajo
+19048,3,Muy bajo
+19049,2,Muy bajo
+19050,1,Bajo
+19051,1.5,Bajo
+20001,1,Alto
+20002,1.5,Alto
+20003,1,Muy alto
+20004,1,Medio
+20005,1.5,Medio
+20006,1.5,Medio
+20007,2,Muy alto
+20008,1,Alto
+20009,1.5,Alto
+20010,1.5,Bajo
+20011,1,Alto
+20012,1,Muy alto
+20013,1.5,Medio
+20014,2,Bajo
+20015,1.5,Muy alto
+20016,1,Muy alto
+20017,1,Alto
+20018,1,Alto
+20019,1,Alto
+20020,1,Muy alto
+20021,1.5,Medio
+20022,1,Medio
+20023,1.5,Bajo
+20024,1,Muy alto
+20025,1.5,Medio
+20026,1,Alto
+20027,1,Muy alto
+20028,1.5,Alto
+20029,1,Muy alto
+20030,1.5,Muy bajo
+20031,1.5,Alto
+20032,1,Alto
+20033,1,Bajo
+20034,1,Alto
+20035,1,Muy bajo
+20036,1,Medio
+20037,1,Muy alto
+20038,1,Medio
+20039,2.5,Bajo
+20040,1,Muy alto
+20041,1.5,Muy alto
+20042,1.5,Medio
+20043,2,Bajo
+20044,2,Medio
+20045,1.5,Bajo
+20046,1,Alto
+20047,1,Medio
+20048,1,Muy alto
+20049,1,Alto
+20050,1,Muy alto
+20051,1.5,Muy alto
+20052,1.5,Alto
+20053,1,Medio
+20054,1,Alto
+20055,1,Alto
+20056,1,Alto
+20057,2,Medio
+20058,1,Muy alto
+20059,2,Medio
+20060,1,Muy alto
+20061,1,Alto
+20062,1,Bajo
+20063,1.5,Bajo
+20064,1,Alto
+20065,1,Alto
+20066,1.5,Medio
+20067,2,Muy bajo
+20068,2,Medio
+20069,1,Muy alto
+20070,1.5,Alto
+20071,1,Muy alto
+20072,1.5,Alto
+20073,1.5,Alto
+20074,1,Alto
+20075,1.5,Medio
+20076,1,Alto
+20077,1,Medio
+20078,1,Bajo
+20079,2.5,Muy bajo
+20080,1,Alto
+20081,1,Alto
+20082,1,Alto
+20083,1.5,Bajo
+20084,1.5,Muy bajo
+20085,1,Muy alto
+20086,1,Alto
+20087,1.5,Medio
+20088,1,Muy alto
+20089,1,Medio
+20090,1.5,Alto
+20091,1.5,Muy bajo
+20092,1,Medio
+20093,1,Bajo
+20094,1,Muy alto
+20095,1,Muy alto
+20096,1,Medio
+20097,1,Alto
+20098,1,Muy alto
+20099,1,Muy alto
+20100,1,Alto
+20101,1,Alto
+20102,1,Medio
+20103,1.5,Alto
+20104,1,Alto
+20105,1,Alto
+20106,1,Alto
+20107,2,Bajo
+20108,1,Alto
+20109,1,Medio
+20110,1,Muy alto
+20111,1.5,Muy alto
+20112,1,Alto
+20113,1,Alto
+20114,1,Alto
+20115,1.5,Bajo
+20116,1.5,Muy alto
+20117,1,Alto
+20118,1,Alto
+20119,1,Alto
+20120,1,Medio
+20121,1,Medio
+20122,1,Medio
+20123,1,Alto
+20124,1.5,Muy alto
+20125,1,Alto
+20126,1.5,Muy alto
+20127,1,Muy alto
+20128,1,Alto
+20129,1,Medio
+20130,1.5,Alto
+20131,1.5,Alto
+20132,1,Medio
+20133,1,Muy alto
+20134,1.5,Muy alto
+20135,1,Medio
+20136,1.5,Alto
+20137,1,Muy alto
+20138,1,Medio
+20139,1,Muy alto
+20140,1,Medio
+20141,1.5,Alto
+20142,1,Alto
+20143,1.5,Alto
+20144,1,Alto
+20145,1.5,Bajo
+20146,1,Alto
+20147,1,Alto
+20148,1,Muy alto
+20149,1,Muy alto
+20150,1.5,Bajo
+20151,1,Alto
+20152,1,Muy alto
+20153,1.5,Alto
+20154,1,Alto
+20155,1,Muy alto
+20156,1,Medio
+20157,2,Muy bajo
+20158,1,Muy alto
+20159,1,Muy alto
+20160,1,Alto
+20161,1,Alto
+20162,1,Muy alto
+20163,1,Alto
+20164,1,Alto
+20165,1,Alto
+20166,1.5,Medio
+20167,1,Muy alto
+20168,1,Alto
+20169,1,Muy alto
+20170,1,Muy alto
+20171,1,Muy alto
+20172,1,Medio
+20173,1,Alto
+20174,1.5,Bajo
+20175,1,Alto
+20176,1,Alto
+20177,1.5,Alto
+20178,1,Bajo
+20179,1,Alto
+20180,1,Alto
+20181,1,Alto
+20182,1,Muy alto
+20183,1,Alto
+20184,2,Bajo
+20185,1.5,Alto
+20186,1,Medio
+20187,1,Muy alto
+20188,1.5,Alto
+20189,1,Muy alto
+20190,1.5,Alto
+20191,1,Medio
+20192,1,Bajo
+20193,1.5,Medio
+20194,1,Medio
+20195,1,Muy alto
+20196,1,Bajo
+20197,1.5,Alto
+20198,1.5,Alto
+20199,1,Alto
+20200,1,Muy alto
+20201,1,Alto
+20202,1,Alto
+20203,1,Muy alto
+20204,1,Alto
+20205,1,Muy alto
+20206,1,Alto
+20207,1,Alto
+20208,1,Muy alto
+20209,1,Muy alto
+20210,1,Alto
+20211,1,Muy alto
+20212,1,Muy alto
+20213,1,Alto
+20214,1,Alto
+20215,1,Medio
+20216,1,Alto
+20217,1,Muy alto
+20218,1,Alto
+20219,1.5,Alto
+20220,1,Alto
+20221,1,Alto
+20222,1,Alto
+20223,1,Alto
+20224,1,Medio
+20225,1,Muy alto
+20226,1,Alto
+20227,1.5,Muy bajo
+20228,1,Muy alto
+20229,1,Muy alto
+20230,1,Medio
+20231,1.5,Muy alto
+20232,1.5,Muy alto
+20233,1,Alto
+20234,1,Muy alto
+20235,1,Muy alto
+20236,1,Muy alto
+20237,1,Medio
+20238,1,Alto
+20239,1,Alto
+20240,1,Muy alto
+20241,1,Alto
+20242,1.5,Muy alto
+20243,1,Medio
+20244,1,Alto
+20245,1,Alto
+20246,1,Alto
+20247,1,Bajo
+20248,1.5,Muy alto
+20249,1.5,Alto
+20250,1,Alto
+20251,1,Muy alto
+20252,1,Muy alto
+20253,1,Muy alto
+20254,1,Alto
+20255,1,Muy alto
+20256,1,Medio
+20257,1,Muy alto
+20258,1,Alto
+20259,1,Muy alto
+20260,1,Alto
+20261,1,Alto
+20262,1,Medio
+20263,1,Muy alto
+20264,1,Muy alto
+20265,1,Alto
+20266,1,Muy alto
+20267,1,Bajo
+20268,1,Alto
+20269,1,Alto
+20270,1,Muy alto
+20271,1,Muy alto
+20272,1.5,Muy alto
+20273,1,Muy alto
+20274,1,Alto
+20275,1.5,Alto
+20276,1,Muy alto
+20277,1,Muy alto
+20278,1.5,Alto
+20279,1,Alto
+20280,1,Medio
+20281,1,Medio
+20282,1,Alto
+20283,1,Alto
+20284,1.5,Muy alto
+20285,1,Alto
+20286,1,Alto
+20287,1,Alto
+20288,1,Alto
+20289,1,Alto
+20290,1,Alto
+20291,1,Alto
+20292,1,Alto
+20293,1.5,Muy bajo
+20294,1.5,Bajo
+20295,1.5,Bajo
+20296,1,Medio
+20297,1,Muy alto
+20298,1.5,Medio
+20299,1,Alto
+20300,1.5,Alto
+20301,1,Alto
+20302,1.5,Muy alto
+20303,1,Medio
+20304,1,Alto
+20305,2,Bajo
+20306,1,Muy alto
+20307,1,Alto
+20308,1.5,Alto
+20309,1.5,Muy alto
+20310,1.5,Alto
+20311,1,Muy alto
+20312,1.5,Muy alto
+20313,1,Alto
+20314,1,Medio
+20315,1,Muy alto
+20316,1,Alto
+20317,1,Alto
+20318,2,Bajo
+20319,1,Alto
+20320,1,Medio
+20321,1,Alto
+20322,1,Alto
+20323,1,Alto
+20324,1.5,Alto
+20325,1.5,Alto
+20326,1,Muy alto
+20327,1.5,Alto
+20328,1,Muy alto
+20329,1,Alto
+20330,1,Muy alto
+20331,1,Alto
+20332,1,Medio
+20333,1,Medio
+20334,1.5,Alto
+20335,1,Muy alto
+20336,1,Alto
+20337,1,Muy alto
+20338,1.5,Bajo
+20339,1,Medio
+20340,1,Alto
+20341,1,Medio
+20342,1,Bajo
+20343,1,Alto
+20344,1,Alto
+20345,1,Alto
+20346,1,Alto
+20347,1,Muy alto
+20348,1,Alto
+20349,1,Alto
+20350,1.5,Muy bajo
+20351,1,Alto
+20352,1,Muy alto
+20353,1,Alto
+20354,1,Muy alto
+20355,1,Muy alto
+20356,1,Alto
+20357,1,Alto
+20358,1,Alto
+20359,1,Medio
+20360,1.5,Alto
+20361,1,Alto
+20362,1,Medio
+20363,1,Medio
+20364,1.5,Alto
+20365,1,Medio
+20366,1.5,Muy alto
+20367,1.5,Muy alto
+20368,1,Alto
+20369,1,Medio
+20370,1,Alto
+20371,1,Alto
+20372,1,Muy alto
+20373,1,Alto
+20374,1,Muy alto
+20375,2,Muy bajo
+20376,1,Medio
+20377,1,Alto
+20378,1,Alto
+20379,1,Muy alto
+20380,1,Alto
+20381,1,Alto
+20382,1,Muy alto
+20383,1,Medio
+20384,1.5,Muy alto
+20385,2.5,Bajo
+20386,1,Muy alto
+20387,1,Medio
+20388,1,Muy alto
+20389,1,Muy alto
+20390,2.5,Muy bajo
+20391,1,Muy alto
+20392,1,Muy alto
+20393,1.5,Muy alto
+20394,1,Alto
+20395,1,Muy alto
+20396,1,Muy alto
+20397,2,Medio
+20398,1.5,Medio
+20399,2,Bajo
+20400,1,Alto
+20401,1.5,Medio
+20402,1,Alto
+20403,1,Bajo
+20404,1,Medio
+20405,1,Alto
+20406,1,Muy alto
+20407,1.5,Muy alto
+20408,1,Medio
+20409,1.5,Muy bajo
+20410,1,Alto
+20411,1,Medio
+20412,1,Muy alto
+20413,2,Bajo
+20414,1.5,Alto
+20415,1,Alto
+20416,1,Alto
+20417,1,Alto
+20418,1.5,Medio
+20419,1,Medio
+20420,1,Alto
+20421,1.5,Medio
+20422,1,Alto
+20423,1,Alto
+20424,1,Muy alto
+20425,1,Muy alto
+20426,1,Muy alto
+20427,1,Medio
+20428,1,Muy alto
+20429,1,Muy alto
+20430,1,Alto
+20431,1,Medio
+20432,1,Medio
+20433,1,Muy alto
+20434,1,Muy alto
+20435,1,Muy alto
+20436,1,Muy alto
+20437,1.5,Muy alto
+20438,1,Muy alto
+20439,1,Alto
+20440,1,Alto
+20441,1.5,Alto
+20442,1,Medio
+20443,1,Bajo
+20444,1,Muy alto
+20445,1,Alto
+20446,1,Alto
+20447,1.5,Alto
+20448,1,Muy alto
+20449,1,Alto
+20450,1,Muy alto
+20451,1,Muy alto
+20452,1.5,Alto
+20453,1,Medio
+20454,1,Muy alto
+20455,1,Alto
+20456,1,Medio
+20457,1,Muy alto
+20458,1,Alto
+20459,1,Medio
+20460,1,Muy alto
+20461,1,Alto
+20462,1,Medio
+20463,1,Alto
+20464,1,Alto
+20465,1,Alto
+20466,1,Muy alto
+20467,1.5,Alto
+20468,1,Alto
+20469,1.5,Alto
+20470,1,Alto
+20471,1,Alto
+20472,1.5,Medio
+20473,1,Alto
+20474,1,Alto
+20475,1.5,Alto
+20476,1,Alto
+20477,1,Muy alto
+20478,1,Alto
+20479,1,Alto
+20480,1,Muy alto
+20481,1,Alto
+20482,2,Alto
+20483,1.5,Medio
+20484,1,Alto
+20485,1,Muy alto
+20486,1,Medio
+20487,1,Alto
+20488,1,Alto
+20489,1,Muy alto
+20490,1,Alto
+20491,1,Alto
+20492,1,Muy alto
+20493,1,Medio
+20494,1,Muy alto
+20495,1,Muy alto
+20496,1,Bajo
+20497,2,Muy alto
+20498,1,Muy alto
+20499,1,Bajo
+20500,1,Muy alto
+20501,1,Alto
+20502,1,Muy alto
+20503,1,Medio
+20504,1,Alto
+20505,1.5,Medio
+20506,1,Medio
+20507,1.5,Alto
+20508,1,Medio
+20509,1,Muy alto
+20510,1,Alto
+20511,1,Muy alto
+20512,1,Muy alto
+20513,1.5,Alto
+20514,1,Muy alto
+20515,2,Medio
+20516,1,Alto
+20517,1,Muy alto
+20518,1,Alto
+20519,1,Medio
+20520,1.5,Alto
+20521,1,Alto
+20522,1,Muy alto
+20523,1,Medio
+20524,1,Medio
+20525,1.5,Medio
+20526,1.5,Alto
+20527,1,Alto
+20528,1,Medio
+20529,1,Muy alto
+20530,1,Alto
+20531,1,Medio
+20532,1,Muy alto
+20533,1,Medio
+20534,1.5,Muy alto
+20535,1,Muy alto
+20536,1,Alto
+20537,1,Alto
+20538,1,Alto
+20539,1.5,Bajo
+20540,1.5,Bajo
+20541,1,Alto
+20542,1,Alto
+20543,1.5,Muy alto
+20544,1,Alto
+20545,1.5,Bajo
+20546,1.5,Alto
+20547,1,Alto
+20548,1,Alto
+20549,1,Alto
+20550,1.5,Alto
+20551,1.5,Bajo
+20552,1,Medio
+20553,1.5,Bajo
+20554,1,Alto
+20555,1,Alto
+20556,1,Alto
+20557,1.5,Bajo
+20558,1,Medio
+20559,1.5,Alto
+20560,1.5,Alto
+20561,2,Alto
+20562,1,Medio
+20563,1,Muy alto
+20564,1,Muy alto
+20565,1.5,Medio
+20566,1,Muy alto
+20567,1,Muy alto
+20568,1,Alto
+20569,1,Muy alto
+20570,1.5,Medio
+21001,2,Medio
+21002,1.5,Alto
+21003,2,Medio
+21004,2,Medio
+21005,1,Muy alto
+21006,1.5,Muy alto
+21007,1,Alto
+21008,1,Medio
+21009,1,Alto
+21010,2,Muy alto
+21011,1,Alto
+21012,1.5,Alto
+21013,2,Medio
+21014,1.5,Muy alto
+21015,2.5,Bajo
+21016,1,Alto
+21017,1.5,Alto
+21018,1,Alto
+21019,2,Bajo
+21020,1.5,Medio
+21021,1,Medio
+21022,1.5,Alto
+21023,1.5,Alto
+21024,1,Medio
+21025,1.5,Alto
+21026,1.5,Medio
+21027,1,Alto
+21028,1,Muy alto
+21029,1.5,Alto
+21030,1,Muy alto
+21031,1,Alto
+21032,1,Alto
+21033,1,Alto
+21034,1.5,Bajo
+21035,1.5,Alto
+21036,1,Muy alto
+21037,1,Alto
+21038,1.5,Medio
+21039,1,Alto
+21040,1,Alto
+21041,2,Muy bajo
+21042,1,Alto
+21043,1.5,Alto
+21044,1.5,Medio
+21045,2,Medio
+21046,1.5,Medio
+21047,1.5,Medio
+21048,1.5,Medio
+21049,1.5,Muy alto
+21050,1.5,Alto
+21051,1.5,Medio
+21052,1,Alto
+21053,2,Medio
+21054,1.5,Alto
+21055,1,Alto
+21056,1,Medio
+21057,1,Alto
+21058,1.5,Muy alto
+21059,1,Alto
+21060,1.5,Medio
+21061,1,Muy alto
+21062,1,Alto
+21063,1.5,Medio
+21064,1.5,Alto
+21065,1.5,Medio
+21066,1,Alto
+21067,1.5,Medio
+21068,1,Muy alto
+21069,1.5,Alto
+21070,1,Alto
+21071,2,Medio
+21072,1,Muy alto
+21073,1.5,Alto
+21074,2,Bajo
+21075,1.5,Alto
+21076,1.5,Alto
+21077,1,Muy alto
+21078,1.5,Muy alto
+21079,1.5,Medio
+21080,1,Muy alto
+21081,1,Alto
+21082,1.5,Medio
+21083,1,Alto
+21084,1.5,Muy alto
+21085,2,Medio
+21086,1,Muy alto
+21087,1.5,Alto
+21088,1,Muy alto
+21089,1.5,Muy alto
+21090,1.5,Bajo
+21091,1.5,Bajo
+21092,1,Alto
+21093,1,Alto
+21094,2,Medio
+21095,1,Medio
+21096,1,Medio
+21097,1,Medio
+21098,1,Alto
+21099,1.5,Alto
+21100,1,Alto
+21101,1,Alto
+21102,1.5,Bajo
+21103,1.5,Alto
+21104,1.5,Medio
+21105,1,Alto
+21106,1.5,Alto
+21107,1,Muy alto
+21108,1.5,Medio
+21109,1.5,Muy alto
+21110,1.5,Alto
+21111,1.5,Muy alto
+21112,1.5,Alto
+21113,1,Medio
+21114,2,Muy bajo
+21115,2,Alto
+21116,1,Alto
+21117,2,Bajo
+21118,2,Medio
+21119,2.5,Muy bajo
+21120,1,Alto
+21121,1,Alto
+21122,1.5,Medio
+21123,1,Muy alto
+21124,1.5,Alto
+21125,1.5,Bajo
+21126,1,Medio
+21127,1,Alto
+21128,1.5,Medio
+21129,1.5,Alto
+21130,1,Medio
+21131,1,Medio
+21132,2.5,Muy bajo
+21133,1,Medio
+21134,1.5,Bajo
+21135,1,Alto
+21136,1.5,Muy bajo
+21137,1.5,Alto
+21138,1.5,Alto
+21139,1,Medio
+21140,2.5,Muy bajo
+21141,1,Alto
+21142,2,Medio
+21143,1.5,Bajo
+21144,1.5,Medio
+21145,1,Muy alto
+21146,1,Alto
+21147,1.5,Alto
+21148,1,Alto
+21149,1.5,Alto
+21150,1,Alto
+21151,1.5,Bajo
+21152,1.5,Medio
+21153,1.5,Bajo
+21154,2,Bajo
+21155,1.5,Alto
+21156,2,Bajo
+21157,1.5,Alto
+21158,1,Alto
+21159,1.5,Muy alto
+21160,1,Alto
+21161,1.5,Alto
+21162,1.5,Muy alto
+21163,2,Bajo
+21164,2,Bajo
+21165,1,Muy alto
+21166,1.5,Alto
+21167,1,Muy alto
+21168,1.5,Alto
+21169,1.5,Alto
+21170,1.5,Alto
+21171,1.5,Medio
+21172,1.5,Alto
+21173,1.5,Bajo
+21174,2,Bajo
+21175,1.5,Medio
+21176,1.5,Medio
+21177,1.5,Alto
+21178,1,Muy alto
+21179,1.5,Alto
+21180,1.5,Medio
+21181,1.5,Bajo
+21182,1.5,Medio
+21183,1.5,Muy alto
+21184,1,Muy alto
+21185,1.5,Alto
+21186,1.5,Medio
+21187,1,Muy alto
+21188,1.5,Alto
+21189,1.5,Medio
+21190,1,Medio
+21191,1.5,Alto
+21192,1,Alto
+21193,1,Alto
+21194,1.5,Medio
+21195,1.5,Muy alto
+21196,1,Alto
+21197,2,Medio
+21198,1,Muy alto
+21199,1.5,Alto
+21200,1,Alto
+21201,1,Alto
+21202,1.5,Alto
+21203,1.5,Alto
+21204,1.5,Medio
+21205,1.5,Medio
+21206,1,Alto
+21207,1.5,Alto
+21208,2,Medio
+21209,1.5,Alto
+21210,1,Alto
+21211,1.5,Bajo
+21212,1.5,Alto
+21213,1,Alto
+21214,2,Medio
+21215,1.5,Alto
+21216,1,Muy alto
+21217,1.5,Muy alto
+22001,1.5,Alto
+22002,1,Muy alto
+22003,1,Medio
+22004,1.5,Medio
+22005,1.5,Medio
+22006,2.5,Muy bajo
+22007,1.5,Bajo
+22008,1.5,Medio
+22009,1.5,Medio
+22010,1,Alto
+22011,1.5,Bajo
+22012,1.5,Bajo
+22013,1,Medio
+22014,2.5,Muy bajo
+22015,1,Medio
+22016,2,Muy bajo
+22017,2,Bajo
+22018,1.5,Medio
+23001,2.5,Muy bajo
+23002,2,Alto
+23003,1.5,Bajo
+23004,2,Bajo
+23005,2,Muy bajo
+23006,1.5,Alto
+23007,1.5,Alto
+23008,2,Muy bajo
+23009,2,Bajo
+23010,1.5,Alto
+24001,1.5,Alto
+24002,1,Alto
+24003,1.5,Muy alto
+24004,1,Alto
+24005,2,Bajo
+24006,1,Alto
+24007,1.5,Bajo
+24008,1.5,Bajo
+24009,1,Bajo
+24010,1.5,Medio
+24011,2,Bajo
+24012,1.5,Muy alto
+24013,3,Bajo
+24014,1.5,Alto
+24015,1.5,Medio
+24016,2,Medio
+24017,1,Alto
+24018,1,Alto
+24019,1,Alto
+24020,2.5,Muy bajo
+24021,1.5,Medio
+24022,1.5,Alto
+24023,1.5,Medio
+24024,2.5,Medio
+24025,2,Medio
+24026,1,Alto
+24027,1.5,Medio
+24028,2,Muy bajo
+24029,1.5,Muy alto
+24030,1,Alto
+24031,1,Muy alto
+24032,1.5,Medio
+24033,1,Medio
+24034,1.5,Medio
+24035,2,Muy bajo
+24036,1.5,Alto
+24037,2,Alto
+24038,1,Muy alto
+24039,1.5,Alto
+24040,2,Medio
+24041,1,Alto
+24042,1.5,Medio
+24043,1.5,Medio
+24044,1.5,Alto
+24045,1.5,Alto
+24046,1.5,Alto
+24047,1,Alto
+24048,1.5,Medio
+24049,1.5,Medio
+24050,1.5,Medio
+24051,1.5,Medio
+24052,1.5,Medio
+24053,1.5,Medio
+24054,1.5,Alto
+24055,1.5,Medio
+24056,1.5,Medio
+24057,1.5,Alto
+24058,1.5,Medio
+25001,2,Muy bajo
+25002,1.5,Bajo
+25003,1.5,Alto
+25004,1.5,Medio
+25005,1.5,Alto
+25006,2.5,Muy bajo
+25007,1.5,Medio
+25008,2,Medio
+25009,2,Bajo
+25010,1.5,Medio
+25011,2.5,Bajo
+25012,2,Muy bajo
+25013,1.5,Medio
+25014,2,Bajo
+25015,2,Muy bajo
+25016,1.5,Medio
+25017,1.5,Medio
+25018,2,Medio
+26001,1,Bajo
+26002,2.5,Muy bajo
+26003,1.5,Medio
+26004,1.5,Muy bajo
+26005,1,Bajo
+26006,1,Bajo
+26007,1,Bajo
+26008,1,Bajo
+26009,1,Bajo
+26010,1,Bajo
+26011,1,Muy bajo
+26012,1.5,Bajo
+26013,1,Bajo
+26014,1,Bajo
+26015,1,Bajo
+26016,1.5,Muy bajo
+26017,2,Muy bajo
+26018,2.5,Muy bajo
+26019,2,Muy bajo
+26020,1.5,Bajo
+26021,1,Bajo
+26022,1,Bajo
+26023,1.5,Muy bajo
+26024,1,Bajo
+26025,2,Muy bajo
+26026,1.5,Medio
+26027,1.5,Muy bajo
+26028,1,Muy bajo
+26029,2,Muy bajo
+26030,2.5,Muy bajo
+26031,1,Bajo
+26032,1,Bajo
+26033,2,Bajo
+26034,1,Bajo
+26035,1.5,Muy bajo
+26036,2,Muy bajo
+26037,1,Muy bajo
+26038,1.5,Muy bajo
+26039,1.5,Muy bajo
+26040,1,Bajo
+26041,1.5,Muy bajo
+26042,2,Bajo
+26043,2,Muy bajo
+26044,1,Medio
+26045,1,Bajo
+26046,1,Bajo
+26047,1.5,Muy bajo
+26048,2.5,Muy bajo
+26049,1,Medio
+26050,1,Bajo
+26051,1.5,Medio
+26052,1.5,Bajo
+26053,1,Bajo
+26054,1,Bajo
+26055,2,Muy bajo
+26056,1.5,Medio
+26057,1,Bajo
+26058,1.5,Muy bajo
+26059,1,Bajo
+26060,1,Bajo
+26061,1,Bajo
+26062,1,Muy bajo
+26063,1,Muy bajo
+26064,1,Bajo
+26065,1,Bajo
+26066,1.5,Muy bajo
+26067,1,Bajo
+26068,1,Bajo
+26069,1.5,Medio
+26070,1.5,Bajo
+26071,1.5,Bajo
+26072,1.5,Medio
+27001,1.5,Medio
+27002,2,Bajo
+27003,2,Medio
+27004,2.5,Muy bajo
+27005,2,Bajo
+27006,2,Medio
+27007,2,Bajo
+27008,2,Medio
+27009,1.5,Medio
+27010,2,Bajo
+27011,1.5,Medio
+27012,2,Bajo
+27013,1.5,Muy bajo
+27014,2,Muy bajo
+27015,1.5,Medio
+27016,2,Medio
+27017,2,Medio
+28001,1.5,Bajo
+28002,1.5,Medio
+28003,3,Muy bajo
+28004,1.5,Medio
+28005,1,Alto
+28006,1,Alto
+28007,1.5,Muy bajo
+28008,1,Alto
+28009,5,Muy bajo
+28010,1,Medio
+28011,1,Medio
+28012,1.5,Medio
+28013,1,Medio
+28014,1.5,Bajo
+28015,1.5,Bajo
+28016,1.5,Medio
+28017,1.5,Medio
+28018,1.5,Medio
+28019,1.5,Medio
+28020,1,Medio
+28021,2,Bajo
+28022,2,Muy bajo
+28023,1,Medio
+28024,2,Muy bajo
+28025,2,Muy bajo
+28026,1,Alto
+28027,2,Muy bajo
+28028,1,Medio
+28029,1.5,Alto
+28030,1.5,Medio
+28031,1,Medio
+28032,3,Muy bajo
+28033,2,Muy bajo
+28034,1,Alto
+28035,2,Bajo
+28036,1,Alto
+28037,1.5,Medio
+28038,3,Muy bajo
+28039,1.5,Alto
+28040,2,Bajo
+28041,3,Muy bajo
+28042,1,Alto
+28043,1.5,Bajo
+29001,1.5,Muy bajo
+29002,1.5,Muy bajo
+29003,1,Medio
+29004,1.5,Medio
+29005,2,Muy bajo
+29006,2,Muy bajo
+29007,1.5,Medio
+29008,1.5,Bajo
+29009,1.5,Bajo
+29010,2,Muy bajo
+29011,1,Bajo
+29012,1,Medio
+29013,2,Bajo
+29014,1.5,Bajo
+29015,1.5,Bajo
+29016,1.5,Bajo
+29017,1.5,Bajo
+29018,2,Bajo
+29019,1.5,Bajo
+29020,1.5,Bajo
+29021,1.5,Bajo
+29022,1,Bajo
+29023,1.5,Bajo
+29024,1.5,Muy bajo
+29025,2,Bajo
+29026,1.5,Bajo
+29027,1.5,Bajo
+29028,2,Bajo
+29029,1.5,Bajo
+29030,1.5,Medio
+29031,2,Muy bajo
+29032,1.5,Bajo
+29033,2,Muy bajo
+29034,1.5,Medio
+29035,1.5,Muy bajo
+29036,1.5,Muy bajo
+29037,1.5,Medio
+29038,1.5,Muy bajo
+29039,1.5,Bajo
+29040,1.5,Medio
+29041,2,Muy bajo
+29042,2,Muy bajo
+29043,1.5,Muy bajo
+29044,2,Muy bajo
+29045,1.5,Bajo
+29046,1.5,Medio
+29047,1,Medio
+29048,3,Muy bajo
+29049,1.5,Muy bajo
+29050,1.5,Bajo
+29051,1.5,Bajo
+29052,1.5,Bajo
+29053,1.5,Muy bajo
+29054,2,Muy bajo
+29055,1.5,Bajo
+29056,1.5,Bajo
+29057,1.5,Bajo
+29058,2,Bajo
+29059,1.5,Bajo
+29060,2,Bajo
+30001,1,Alto
+30002,1.5,Medio
+30003,2,Medio
+30004,1.5,Medio
+30005,1.5,Alto
+30006,1.5,Alto
+30007,1,Alto
+30008,1,Alto
+30009,1.5,Medio
+30010,2,Alto
+30011,2,Bajo
+30012,1,Alto
+30013,2,Bajo
+30014,1.5,Medio
+30015,1.5,Medio
+30016,2,Muy bajo
+30017,1,Medio
+30018,1,Muy alto
+30019,1,Muy alto
+30020,1,Muy alto
+30021,1.5,Medio
+30022,1.5,Alto
+30023,1.5,Alto
+30024,1.5,Alto
+30025,1.5,Muy alto
+30026,2,Medio
+30027,1,Alto
+30028,2,Muy bajo
+30029,1,Muy alto
+30030,2,Medio
+30031,1,Alto
+30032,2,Alto
+30033,1.5,Alto
+30034,2,Bajo
+30035,1.5,Alto
+30036,1.5,Alto
+30037,1.5,Muy alto
+30038,2,Bajo
+30039,2.5,Muy bajo
+30040,2,Bajo
+30041,1,Alto
+30042,1,Medio
+30043,1.5,Alto
+30044,2,Bajo
+30045,2,Bajo
+30046,1.5,Alto
+30047,2,Alto
+30048,2,Bajo
+30049,1,Alto
+30050,1.5,Muy alto
+30051,1.5,Alto
+30052,1.5,Medio
+30053,1.5,Medio
+30054,1.5,Alto
+30055,1.5,Alto
+30056,1,Muy alto
+30057,1.5,Alto
+30058,1.5,Muy alto
+30059,1.5,Medio
+30060,1.5,Alto
+30061,2,Alto
+30062,1.5,Alto
+30063,1,Muy alto
+30064,1,Muy alto
+30065,1.5,Bajo
+30066,1.5,Alto
+30067,1.5,Muy alto
+30068,2,Bajo
+30069,1.5,Medio
+30070,1.5,Muy alto
+30071,2,Medio
+30072,1.5,Alto
+30073,1.5,Alto
+30074,1.5,Bajo
+30075,1.5,Alto
+30076,1,Muy alto
+30077,2,Medio
+30078,1.5,Alto
+30079,1.5,Alto
+30080,1.5,Alto
+30081,1.5,Medio
+30082,1.5,Bajo
+30083,1.5,Muy alto
+30084,1,Alto
+30085,2,Bajo
+30086,1.5,Alto
+30087,2,Muy bajo
+30088,1.5,Alto
+30089,2,Medio
+30090,1.5,Medio
+30091,1.5,Alto
+30092,2,Medio
+30093,1.5,Medio
+30094,1.5,Alto
+30095,1.5,Alto
+30096,1,Medio
+30097,2,Muy bajo
+30098,1,Alto
+30099,1.5,Alto
+30100,1.5,Medio
+30101,1.5,Medio
+30102,2.5,Medio
+30103,1.5,Muy alto
+30104,1.5,Muy alto
+30105,1.5,Bajo
+30106,1.5,Alto
+30107,1,Alto
+30108,2,Bajo
+30109,2,Medio
+30110,1,Muy alto
+30111,1.5,Medio
+30112,1.5,Medio
+30113,1,Alto
+30114,1.5,Medio
+30115,2,Bajo
+30116,1.5,Medio
+30117,1.5,Alto
+30118,3,Muy bajo
+30119,1.5,Alto
+30120,1.5,Medio
+30121,1.5,Alto
+30122,1.5,Alto
+30123,2,Medio
+30124,2,Alto
+30125,1.5,Medio
+30126,1.5,Bajo
+30127,1.5,Muy alto
+30128,2,Medio
+30129,1.5,Alto
+30130,1.5,Alto
+30131,2,Muy bajo
+30132,1.5,Alto
+30133,1.5,Bajo
+30134,1.5,Bajo
+30135,1.5,Alto
+30136,1.5,Medio
+30137,1,Muy alto
+30138,2,Muy bajo
+30139,1.5,Medio
+30140,1,Alto
+30141,2,Alto
+30142,1.5,Alto
+30143,2,Alto
+30144,1.5,Alto
+30145,1.5,Medio
+30146,1,Alto
+30147,1.5,Muy alto
+30148,1.5,Medio
+30149,1.5,Muy alto
+30150,1.5,Alto
+30151,1.5,Alto
+30152,1.5,Alto
+30153,1,Alto
+30154,1,Alto
+30155,2,Alto
+30156,1,Alto
+30157,1.5,Alto
+30158,1.5,Alto
+30159,1,Muy alto
+30160,2,Alto
+30161,1.5,Alto
+30162,1,Alto
+30163,1,Alto
+30164,1.5,Medio
+30165,1,Muy alto
+30166,1,Alto
+30167,1.5,Alto
+30168,1.5,Muy alto
+30169,1.5,Alto
+30170,1,Muy alto
+30171,1,Muy alto
+30172,1.5,Alto
+30173,1.5,Alto
+30174,2,Bajo
+30175,1.5,Alto
+30176,1.5,Alto
+30177,1,Alto
+30178,1.5,Medio
+30179,1,Medio
+30180,1,Alto
+30181,1.5,Medio
+30182,1.5,Medio
+30183,2,Medio
+30184,1,Muy alto
+30185,1.5,Alto
+30186,1.5,Medio
+30187,1,Alto
+30188,1.5,Alto
+30189,2.5,Bajo
+30190,1,Medio
+30191,1.5,Bajo
+30192,1.5,Medio
+30193,2.5,Muy bajo
+30194,1.5,Alto
+30195,1,Muy alto
+30196,1.5,Medio
+30197,1.5,Alto
+30198,1,Muy alto
+30199,1.5,Medio
+30200,1,Alto
+30201,1.5,Muy alto
+30202,1,Muy alto
+30203,1.5,Muy alto
+30204,2,Bajo
+30205,1.5,Medio
+30206,2,Muy bajo
+30207,2,Medio
+30208,2,Bajo
+30209,1.5,Alto
+30210,1.5,Alto
+30211,1.5,Medio
+30212,1.5,Alto
+31001,1,Alto
+31002,1.5,Medio
+31003,1.5,Alto
+31004,1.5,Medio
+31005,1,Medio
+31006,1.5,Medio
+31007,1.5,Medio
+31008,1.5,Medio
+31009,1.5,Alto
+31010,1,Muy alto
+31011,1.5,Medio
+31012,1.5,Alto
+31013,1.5,Bajo
+31014,1,Alto
+31015,1.5,Alto
+31016,1.5,Alto
+31017,1,Alto
+31018,1,Alto
+31019,1.5,Muy alto
+31020,1.5,Medio
+31021,1.5,Alto
+31022,1.5,Muy alto
+31023,1.5,Medio
+31024,1.5,Alto
+31025,1.5,Alto
+31026,1.5,Medio
+31027,1.5,Bajo
+31028,1,Medio
+31029,1.5,Medio
+31030,1.5,Alto
+31031,1,Medio
+31032,1.5,Alto
+31033,1.5,Alto
+31034,1.5,Alto
+31035,1.5,Alto
+31036,1.5,Alto
+31037,1.5,Alto
+31038,2,Medio
+31039,1.5,Medio
+31040,2,Medio
+31041,2.5,Bajo
+31042,1.5,Medio
+31043,1,Alto
+31044,1.5,Alto
+31045,1,Alto
+31046,1.5,Alto
+31047,1.5,Alto
+31048,1.5,Alto
+31049,1.5,Muy alto
+31050,2,Muy bajo
+31051,1,Medio
+31052,2,Medio
+31053,1.5,Medio
+31054,1,Medio
+31055,1.5,Alto
+31056,2,Alto
+31057,1.5,Medio
+31058,2,Alto
+31059,2,Bajo
+31060,1,Alto
+31061,1,Medio
+31062,1.5,Alto
+31063,1.5,Alto
+31064,1,Alto
+31065,1,Medio
+31066,1.5,Alto
+31067,1.5,Medio
+31068,1.5,Medio
+31069,1.5,Alto
+31070,1.5,Medio
+31071,1,Alto
+31072,1,Alto
+31073,1.5,Alto
+31074,1.5,Alto
+31075,1.5,Alto
+31076,1.5,Alto
+31077,1.5,Alto
+31078,1.5,Alto
+31079,2,Medio
+31080,1.5,Alto
+31081,1.5,Alto
+31082,1.5,Medio
+31083,1,Medio
+31084,1.5,Alto
+31085,1.5,Alto
+31086,1,Alto
+31087,1.5,Alto
+31088,1,Alto
+31089,2,Medio
+31090,1.5,Alto
+31091,1.5,Alto
+31092,1.5,Muy alto
+31093,1.5,Bajo
+31094,1,Alto
+31095,1.5,Medio
+31096,2,Alto
+31097,1.5,Alto
+31098,1.5,Alto
+31099,1.5,Alto
+31100,1.5,Alto
+31101,2,Bajo
+31102,2,Alto
+31103,1.5,Alto
+31104,1.5,Alto
+31105,1.5,Medio
+31106,1,Alto
+32001,1.5,Medio
+32002,1,Alto
+32003,1,Medio
+32004,1.5,Medio
+32005,2,Muy bajo
+32006,1.5,Medio
+32007,1.5,Bajo
+32008,1.5,Bajo
+32009,1.5,Medio
+32010,2,Bajo
+32011,1,Bajo
+32012,1,Medio
+32013,1.5,Bajo
+32014,1.5,Medio
+32015,1,Alto
+32016,1.5,Medio
+32017,2,Muy bajo
+32018,1,Medio
+32019,1.5,Bajo
+32020,2,Muy bajo
+32021,1,Alto
+32022,2,Bajo
+32023,1.5,Bajo
+32024,2,Bajo
+32025,1.5,Bajo
+32026,1,Alto
+32027,1,Alto
+32028,1,Alto
+32029,1.5,Bajo
+32030,1,Bajo
+32031,1.5,Medio
+32032,1.5,Muy bajo
+32033,1,Bajo
+32034,2,Bajo
+32035,1,Medio
+32036,2,Bajo
+32037,1.5,Medio
+32038,1.5,Medio
+32039,2,Bajo
+32040,1.5,Medio
+32041,1,Medio
+32042,2,Medio
+32043,1,Medio
+32044,1.5,Medio
+32045,1.5,Medio
+32046,1,Medio
+32047,1.5,Medio
+32048,2,Bajo
+32049,1.5,Medio
+32050,1.5,Bajo
+32051,1.5,Medio
+32052,1.5,Bajo
+32053,1.5,Bajo
+32054,1.5,Medio
+32055,1.5,Bajo
+32056,3,Muy bajo
+32057,1.5,Bajo
+32058,1,Medio

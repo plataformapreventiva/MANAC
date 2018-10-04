@@ -201,18 +201,30 @@ aux2 <- (x_mun_train %*% t(sims_alpha))
 View(sims_beta_mun_raw[,municipios_train$geo_id])
 
 
+# eta <- beta0+beta1*x  ## predictor lineal
+# prob <- plogis(eta)   ## logística inversa
+# y <- rbetabinom(k, prob=prob, size=n, theta=6) # simulaciones de beta binomial
 
 
+# Diagnósticos
+library(bayesplot)
+posterior <- extract(fit, inc_warmup = TRUE, permuted = FALSE)
 
+color_scheme_set("mix-blue-pink")
+p <- mcmc_trace(posterior,  pars = c("rho", "sigma_mun"), n_warmup = 400,
+                facet_args = list(nrow = 2, labeller = label_parsed, scales = "free_y"))
+p + facet_text(size = 15)
 
+# $\hat{R}$ es una estadística de reducción potencial de escala, mide el cociente
+# de la varianza promedio en las simulaciones de cada cadena respecto a la
+# varianza de todas las cadenas juntas. La idea es que si todas la cadenas han
+# alcanzado un estado de equilibrio, el numerador y denominador serán iguales
+# y $\hat{R}$ será uno, de lo contrario será mayor a uno (Gelman et al. 2013, Stan Development Team 2018)).
 
-eta <- beta0+beta1*x  ## predictor lineal
-prob <- plogis(eta)   ## logística inversa
-y <- rbetabinom(k, prob=prob, size=n, theta=6) # simulaciones de beta binomial
+rhats_betas <- rhat(fit, pars = "beta")
+mcmc_rhat(rhats_betas) + ggtitle("R-hat betas") + yaxis_text(hjust = 1)
 
+ratios <- neff_ratio(fit, pars = "beta")
+mcmc_neff(ratios, size = 2) + ggtitle("N_eff betas") + yaxis_text(hjust = 1)
 
-
-
-
-
-
+mcmc_acf_bar(posterior, pars = "sigma_mun", lags = 10)
