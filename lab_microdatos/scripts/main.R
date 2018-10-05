@@ -18,7 +18,7 @@ muns <- unique(dummy_viviendas$MUN)
 mun <- muns[1]
 datos_viviendas_mun <- filter(dummy_viviendas, MUN == mun)
 datos_personas_mun <- filter(dummy_personas, MUN == mun)
-# dependiendo de memoria borrar bases estatales y leer con cada municipio
+# dependiendo de memoria borrar bases estatales 
 rm(dummy_viviendas, dummy_personas)
 # crea matriz de diseño
 mat <- preparar_datos(datos_vivienda = datos_viviendas_mun, 

@@ -68,7 +68,7 @@ crear_matrices <- function(datos){
     )
   x_hogar <- model.matrix(~ jefe_sexo + pisos + dis_agua + excus + 
       drenaje + servicio_celular + servicio_internet + automovil + tam_hog +
-      n_ocup + max_ed + n_ocup * max_ed + factor(tam_loc) + indigena, 
+      n_ocup + max_ed + n_ocup * max_ed + tam_loc + indigena, 
     data = datos_limpios_hogar)
   x_hogar <- x_hogar[, colnames(x_hogar) != "(Intercept)"]
   list(ids = datos_limpios_hogar$id, x_hogar = x_hogar)
