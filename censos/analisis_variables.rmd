@@ -1,0 +1,84 @@
+---
+title: "Análisis de variables en los CENSOS"
+output: html_document
+---
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+library(foreign)
+library(tidyverse)
+rm(list = ls())
+```
+
+## Variables a nivel vivienda utilizadas para el modelo
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+viviendas <- read.dbf('C:/Users/Amanda29/Documents/Proyecto/Censos/datos_censos/DUMMY_VIVIENDAS.dbf')
+viviendas <- viviendas %>%
+  select(ID_VIV, ENT, MUN, AGEB, PISOS,
+         DISAGU, SERSAN, DRENAJE, AUTOPROP, CELULAR, 
+         INTERNET, NUMPERS, TAMLOC4)
+```
+
+Se toma para el análisis el ejemplo de la base de datos de viviendas que presenta el INEGI en su página de internet que muestra `r nrow(viviendas)` registros.
+
+### Explorar casos de "Blanco por pase"
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+blanco_pase_viv <- DataExplorer::plot_missing(viviendas)
+```
+
+### Explorar casos de "No especificado"
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+# Recodificación
+viviendas1 <- viviendas %>%
+  mutate(id_viv = ID_VIV,
+         entidad = ENT, 
+         municipio = MUN, 
+         ageb = AGEB,
+         pisos = ifelse(is.na(PISOS), '0', ifelse(PISOS == '9', NA, PISOS)),
+         dis_agua = ifelse(is.na(DISAGU), '0', ifelse(DISAGU == '9', NA, DISAGU)),
+         excus = ifelse(is.na(SERSAN), '0', ifelse(SERSAN == '9', NA, SERSAN)),
+         drenaje = ifelse(is.na(DRENAJE), '0', ifelse(DRENAJE == '9', NA, DRENAJE)),
+         automovil = ifelse(is.na(AUTOPROP), '0', ifelse(AUTOPROP == '9', NA, AUTOPROP)),
+         servicio_celular =  ifelse(is.na(CELULAR), '0', ifelse(CELULAR == '9', NA, CELULAR)),
+         servicio_internet = ifelse(is.na(INTERNET), '0', ifelse(INTERNET == '9', NA, INTERNET)),
+         tam_hog = NUMPERS,
+         tam_loc = TAMLOC4) %>%
+  select(id_viv, entidad, municipio, ageb, pisos, 
+         dis_agua, excus, drenaje, automovil, servicio_celular, 
+         servicio_internet, tam_hog, tam_loc)
+no_especif_viv <- DataExplorer::plot_missing(viviendas1)
+```
+
+## Variables a nivel persona utilizadas para el modelo
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+personas <- read.dbf('C:/Users/Amanda29/Documents/Proyecto/Censos/datos_censos/DUMMY_PERSONAS.dbf')
+personas <- personas %>%
+  select(ID_VIV, SEXO, EDAD, PARENT, HLENGUA, NIVACAD, CONACT) 
+```
+
+Se toma para el análisis el ejemplo de la base de datos de viviendas que presenta el INEGI en su página de internet que muestra `r nrow(personas)` registros.
+
+### Explorar casos de "Blanco por pase"
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+blanco_pase_per <- DataExplorer::plot_missing(personas)
+```
+
+### Explorar casos de "No especificado"
+
+```{r, error=FALSE, warning=FALSE, message=FALSE, echo=FALSE, eval=TRUE}
+# Recodificación
+personas1 <- personas %>%
+  mutate(id_viv = ID_VIV,
+         sexo = SEXO,
+         edad = ifelse(EDAD == '999', NA, EDAD),
+         parent = ifelse(is.na(PARENT), '0', ifelse(PARENT == '99', NA, PARENT)),
+         hlengua = ifelse(is.na(HLENGUA), '0', ifelse(HLENGUA == '9', NA, HLENGUA)),
+         nivacad = ifelse(is.na(NIVACAD), '0', ifelse(NIVACAD == '99', NA, NIVACAD)),
+         conact = ifelse(is.na(CONACT), '0', ifelse(CONACT == '9', NA, CONACT))) %>%
+  select(id_viv, sexo, edad, parent, hlengua, nivacad, conact)
+no_especif_per <- DataExplorer::plot_missing(personas1)
+```
