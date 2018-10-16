@@ -1,4 +1,4 @@
-# !diagnostics off
+# Modelo de carencias 
 
 library(tidyverse)
 library(rstan)
@@ -6,11 +6,17 @@ library(emdbook)
 
 enigh_2010 <- read_csv("datos/base_final.csv")
 
-# Modelo de carencias 
 mod_carencia <- stan_model(file = "modelos/src/carencia_binomial.stan")
 
-set.seed(123456)
-enigh_muestra <- sample_n(enigh_2010, 20000)
+datos_mun <- read_csv("../datos/tabla_municipios.csv") %>% 
+  rename(ubica_geo = cve_muni) %>% 
+  mutate(grado_marg = case_when(grado_marginacion == "Muy alto" ~ 1,
+                                grado_marginacion == "Alto" ~ 2, 
+                                grado_marginacion == "Medio" ~ 3, 
+                                grado_marginacion == "Bajo" ~ 4, 
+                                grado_marginacion == "Muy bajo" ~ 5), 
+         tam_mun = floor(tamloc_mediana), 
+         ubica_geo_int = as.numeric(as.factor(ubica_geo)))
 
 # Crear y probar código para estimar resultados en una muestra.
 # 1. Separar los datos ENIGH en conjuntos de entrenamiento y 
@@ -21,40 +27,20 @@ enigh_muestra <- sample_n(enigh_2010, 20000)
 # 3.1 Verificar resultados estimando dentro de Stan y extrayendo 
 # coeficientes y estimando fuera de Stan.
 
-enigh_train <- sample_frac(enigh_muestra, size = 0.52)
-enigh_test <- setdiff(enigh_muestra, enigh_train)
+# seleccionar muestra (municipios y hogares) en dos:
+#  1. Seleccionamos 500 municipios.
+#  2. Seleccionamos 10,000 hogares dentro de los municipios del paso 1
+#     el tamaño de muestra varía a lo largo de los municipios.
+set.seed(182791)
+in_sample_mun_ids <- sample(unique(enigh_vars$ubica_geo), 500)
+in_sample_ids <- enigh_vars %>% 
+  filter(ubica_geo %in% in_sample_mun_ids) %>% 
+  sample_n(10000) %>% 
+  pull(hogar_id)
 
-limpia_datos <- function(enigh_crudo){
-  aux <- enigh_crudo %>%
-    select(hogar_id, ubica_geo=ubica_geo.y, jefe_sexo, pisos, dis_agua, excus, 
-           drenaje, servicio_celular, servicio_internet, automovil, 
-           tam_hog, n_ocup, conapo, tam_loc=tam_loc.y, ingcor=ingcor.y, maxnved) %>%
-    ## quitar faltantes ########
-    drop_na() %>%
-    mutate(
-      #geo_id = as.numeric(factor(ubica_geo)),
-      jefe_sexo = jefe_sexo,
-      pisos = as.numeric(pisos != 1),
-      dis_agua = as.numeric(dis_agua == 1),
-      excus = as.numeric(excus == 1),
-      drenaje = as.numeric(drenaje!=5),
-      servicio_celular =  as.numeric(servicio_celular == 1),
-      servicio_internet = as.numeric(servicio_internet == 1),
-      automovil = as.numeric(automovil == 1),
-      tam_hog = log(1+tam_hog),
-      n_ocup = log(1+n_ocup),
-      max_ed = log(maxnved)) %>%
-    mutate(max_ed = ifelse(is.na(max_ed), 1, max_ed)) %>%
-    mutate(max_ed_faltante = as.numeric(is.na(max_ed)),
-           max_ed = ifelse(max_ed <= 0, 0, max_ed))
-  
-  aux %>% # Codificacion de niveles en covariables de municipio
-    mutate(conapo = as.integer(conapo),
-           tam_loc = as.integer(tam_loc),
-           # codificacion misma y no nuevos niveles
-           conapo = factor(x = conapo, levels = 1:5, labels = 1:5),
-           tam_loc = factor(x = tam_loc, levels = 1:4, labels = 1:4))
-}
+test_ids <- setdiff(enigh_2010$hogar_id, in_sample_ids)
+
+
 
 get_num_personas_carencias <- function(enigh_limpio){
   aux <- enigh_train %>% select(hogar_id, ic_asalud, total_personas)
@@ -151,10 +137,13 @@ append_sims_params <- function(k){
 # número de cadenas en las simulaciones
 nchains <- length(sims_muestra)
 
-# data frame con estimaciones
+# Con esto se obtiene un dataframe con estimaciones
+# de los parámetros en forma larga puede ser 
+# útil más adelante para hacer los cálculos de predicciones
 params_sims_df <- map_df(.x = 1:nchains, .f = append_sims_params)
 fit_ss <- extract(fit, permuted = TRUE) 
 
+# Operaciones matriciales para hacer la predicción
 # convertir a matrices para hacer las estimaciones
 sims_alpha <- as.matrix(fit, pars = c("alpha")); dim(sims_alpha)
 sims_sigma_mun <- as.matrix(fit, pars = c("sigma_mun")); dim(sims_sigma_mun)
@@ -206,7 +195,7 @@ View(sims_beta_mun_raw[,municipios_train$geo_id])
 # y <- rbetabinom(k, prob=prob, size=n, theta=6) # simulaciones de beta binomial
 
 
-# Diagnósticos
+# Algunos diagnósticos de convergencia 😰
 library(bayesplot)
 posterior <- extract(fit, inc_warmup = TRUE, permuted = FALSE)
 
