@@ -29,7 +29,7 @@ transformed parameters {
   vector[n_mun] beta_mun;
   
   beta_mun = beta_mun_raw * sigma_mun + x_municipio * alpha;
-  reg_pred = beta_0 + x_hogar * beta + beta_mun[municipio] ;
+  reg_pred = beta_0 + x_hogar * beta + beta_mun[municipio];
 }
 
 model {
