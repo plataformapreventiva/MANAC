@@ -18,7 +18,7 @@ mod_ingreso <- stan_model(file = "./src/ingreso.stan")
 
 
 ```{r}
-enigh_sample <- sample_n(enigh_2010, 20000)
+enigh_sample <- sample_n(enigh_2010, 20000) 
 
 DataExplorer::plot_missing(enigh_2010)
 
