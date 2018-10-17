@@ -8,9 +8,11 @@ source("reportes-faltantes.R")
 ######## Primer estado y municipio se hace a mano para revisar 
 ### Aquí leemos datos por estado
 # variables de base viviendas
-dummy_viviendas <- foreign::read.dbf('../../datos/DUMMY_VIVIENDAS.dbf')
+dummy_viviendas <- foreign::read.dbf('../../datos/DUMMY_VIVIENDAS.dbf', 
+  as.is = TRUE)
 # variables de base personas
-dummy_personas <- foreign::read.dbf('../../datos/DUMMY_PERSONAS.dbf')
+dummy_personas <- foreign::read.dbf('../../datos/DUMMY_PERSONAS.dbf', 
+  as.is = TRUE)
 
 # corremos por municipio
 muns <- unique(dummy_viviendas$MUN)
