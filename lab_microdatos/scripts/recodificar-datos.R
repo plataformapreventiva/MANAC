@@ -6,6 +6,7 @@ recodificar_viviendas <- function(datos_viviendas) {
   vivienda_recod <- datos_viviendas %>%
       select(ID_VIV, ENT, MUN, AGEB, PISOS, DISAGU, SERSAN, DRENAJE, AUTOPROP, 
       CELULAR, INTERNET, NUMPERS, TAMLOC4) %>%
+    mutate_if(is.factor, as.character) %>% 
     mutate(id_viv = ID_VIV,
       ubica_geo = paste0(ENT, MUN),
       entidad = ENT, 
@@ -27,20 +28,29 @@ recodificar_viviendas <- function(datos_viviendas) {
 
 recodificar_personas <- function(datos_personas) {
   datos_personas %>%
-    select(ID_VIV, SEXO, EDAD, PARENT, HLENGUA, NIVACAD, CONACT)  %>%
+    select(ID_VIV, SEXO, EDAD, PARENT, HLENGUA, NIVACAD, CONACT) %>%
+    mutate_if(is.factor, as.character) %>% 
     mutate(id_viv = ID_VIV,
-    sexo = ifelse(SEXO == 3, 2, SEXO),
-    edad = as.integer(EDAD),
-    niv_acad = ifelse(is.na(NIVACAD), 0, ifelse(NIVACAD == '00', 1, 
-      ifelse(NIVACAD == '01', 2, ifelse(NIVACAD == '02', 3, 
-        ifelse(NIVACAD == '03', 4, ifelse(NIVACAD == '04', 5,
-          ifelse(NIVACAD %in% c('05', '09'), 6, 
-            ifelse(NIVACAD %in% c('06', '07', '08'), 7,
-              ifelse(NIVACAD == '10', 8, ifelse(NIVACAD == '11', 9,
-                ifelse(NIVACAD == '12', 10, NA))))))))))),
-    ocupado = ifelse(edad > 13 & CONACT %in% c('1', '2'), 1, 0)) %>%
+      sexo = ifelse(SEXO == 3, 2, SEXO),
+      edad = as.integer(EDAD),
+      niv_acad = case_when(
+        is.na(NIVACAD) ~ 0,
+        NIVACAD == "00" ~ 1,
+        NIVACAD == "01" ~ 2,
+        NIVACAD == "02" ~ 3,
+        NIVACAD == "03" ~ 4,
+        NIVACAD == "04" ~ 5,
+        NIVACAD %in% c("05", "09") ~ 6,
+        NIVACAD %in% c("06", "07", "08") ~ 7,
+        NIVACAD == "10" ~ 8,
+        NIVACAD == "11" ~ 9,
+        NIVACAD == "12" ~ 10,
+        TRUE ~ NA
+    ),
+    ocupado = ifelse(edad > 13 & CONACT %in% c('1', '2'), 1, 0)
+      ) %>%
   group_by(id_viv) %>%
-  summarise(jefe_sexo = first((sexo-1)*(PARENT == '01')),
+  summarise(jefe_sexo = first((sexo - 1) * (PARENT == '01')),
     n_ocup = sum(ocupado),
     maxnved = max(niv_acad, na.rm = TRUE),
     maxnved = ifelse(maxnved == Inf | maxnved == -Inf, NA, maxnved),
