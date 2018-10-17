@@ -163,12 +163,13 @@ preparar_datos <- function(datos_enigh, in_sample_ids, covs_mun = TRUE){
       drenaje = as.numeric(drenaje!=5),
       servicio_celular =  as.numeric(servicio_celular == 1),
       servicio_internet = as.numeric(servicio_internet == 1),
-      automovil = as.numeric(automovil == 1),
+      automovil = as.numeric(automovil >= 1),
       tam_hog = tam_hog - mean(tam_hog),
       n_ocup = n_ocup - mean(n_ocup),
       max_ed = maxnved - mean(maxnved), 
       # max_ed = ifelse(is.na(max_ed), 1, max_ed), 
-      in_sample = hogar_id %in% in_sample_ids
+      in_sample = hogar_id %in% in_sample_ids, 
+      tam_loc = factor(tam_loc, levels = 1:4)
       ) %>% 
     arrange(desc(in_sample))
   x_hogar <- model.matrix(~ jefe_sexo + pisos + dis_agua + excus + 
@@ -180,7 +181,7 @@ preparar_datos <- function(datos_enigh, in_sample_ids, covs_mun = TRUE){
     group_by(ubica_geo) %>% 
     summarise(
       conapo = first(conapo), 
-      tam_mun = floor(median(tam_loc)), 
+      tam_mun = floor(median(as.numeric(tam_loc))), 
       in_sample_mun = sum(in_sample) > 0
       ) %>%
       ungroup() %>% 
@@ -228,9 +229,9 @@ datos <- preparar_datos(datos_enigh = enigh_vars, in_sample_ids = in_sample_ids,
   covs_mun = FALSE)
 
 fit <- sampling(mod_ingreso_pred, data = datos$datos_modelo, chains = 2,
-  cores = 2, iter = 700, warmup = 400, control=list(max_treedepth=13))
-save(fit, file = "fit.RData")
-load("fit.RData")
+  cores = 2, iter = 1000, warmup = 500, control=list(max_treedepth=13))
+# save(fit, file = "../datos_salida/fit-guia-ajuste.RData")
+load("../datos_salida/fit-guia-ajuste.RData")
 ```
 
 Ahora revisaremos diagnósticos de convergencia y *pp-checks* esto se puede
@@ -357,7 +358,7 @@ head(nuts_p)
 Las gráficas asociadas a NUTS sirven para analizar las divergencias, sin 
 embargo, en este ajuste no tuvimos divergencias.
 
-### Estiamaciones
+### Estmaciones
 
 ```{r}
 mcmc_areas(posterior, regex_pars = c("alpha"), prob = 0.8) +
