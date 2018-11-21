@@ -1,5 +1,15 @@
 TODO
 
+Tareas 30 agosto
+
+Amanda: 1) diagnósticos de modelo, 2) resúmenes a nivel municipio y AGEB.
+
+Andreu: 1) Base municipios con covariables, 2) diagnósticos de modelo, 3) Resúmenes a nivel municipio.
+
+Teresa: 1) Crear variable train/test en datos, 2) Agregar beta_mun a generated quantities.
+
+
+
 * Inventario Nacional de Viviendas (INV) es 2016 ver qué covariables nos interesaría incluir del inventario.
 
 * Comparar resultados con CUIS para ver si hay diferencia en la recolección de los datos.
