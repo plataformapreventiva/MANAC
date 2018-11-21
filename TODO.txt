@@ -2,17 +2,25 @@ TODO
 
 Tareas 30 agosto
 
-Amanda: 1) diagnósticos de modelo, 2) resúmenes a nivel municipio y AGEB.
+Amanda: 
+* MICRODATOS: Censo básico niveles vivienda y persona
+  1. Checar que estén todas las variables del modelo actual.
+  2. Recodificar para que queden igual que en nuestro modelo.
+  3. Base de tamaño de localidad.
+  4. Probar modelo en microdatos.
+* ENIGH: ¿Por qué se pierden hogares en tradicional a nueva construcción?
+	tradicional (70311) -> nueva construcción (61847)
 
-Andreu: 1) Base municipios con covariables, 2) diagnósticos de modelo, 3) Resúmenes a nivel municipio.
+Andreu: 0) Revisar bases de datos ¿porqué no coinciden hogares?, 1) Lista de variables para estimar cada carencia.
+2) diagnósticos de modelo, 3) Resúmenes a nivel municipio. 
 
-Teresa: 1) Crear variable train/test en datos, 2) Agregar beta_mun a generated quantities.
-
-
-
-* Inventario Nacional de Viviendas (INV) es 2016 ver qué covariables nos interesaría incluir del inventario.
-
-* Comparar resultados con CUIS para ver si hay diferencia en la recolección de los datos.
-
-* Covariables a nivel persona del CPV2010: cruces por grupo de edad y sexo.
-
+Teresa: 
+  1. Crear base con todos los municipios.
+  2. Ajustar modelo con coeficientes de todos los municipios.
+  3. Script de salida:
+	  + Predicción se hará por estado.
+  	+ Estimaciones a nivel AGEB, municipio, estado
+	  + Guardaremos: 
+		  * simulaciones de ingreso total por AGEB, municipio y estado.
+		  * número de hogares por AGEB, municipio y estado, número de adultos y número de menores de edad por AGEB, 
+        municipio y estado.
