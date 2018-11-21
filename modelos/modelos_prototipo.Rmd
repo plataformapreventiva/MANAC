@@ -1,0 +1,83 @@
+---
+title: "Modelos de stan para ingreso y carencias"
+output: html_notebook
+---
+
+```{r, messasge = FALSE, warning = FALSE}
+library(tidyverse)
+library(rstan)
+enigh_2010 <- read_csv("../datos/enigh_final.csv")
+head(enigh_2010)
+```
+
+### Ingreso corriente
+
+```{r, message=FALSE, warning=FALSE}
+mod_ingreso <- stan_model(file = "./src/ingreso.stan")
+```
+
+
+```{r}
+enigh_sample <- sample_n(enigh_2010, 20000) 
+
+DataExplorer::plot_missing(enigh_2010)
+
+## quitar faltantes ########
+
+datos_crudos_x <- enigh_sample %>% 
+  select(hogar_id, ubica_geo, jefe_sexo, pisos, dis_agua, excus, drenaje,
+    servicio_celular, servicio_internet, automovil, tam_hog, n_ocup, conapo,
+    tam_loc, ingcor, maxnved) 
+datos_crudos_x <- drop_na(datos_crudos_x)
+ingreso <- datos_crudos_x$ingcor
+
+
+datos_limpios_x <- datos_crudos_x %>%
+  mutate(
+  geo_id = as.numeric(factor(ubica_geo)),
+  jefe_sexo = jefe_sexo,
+  pisos = as.numeric(pisos != 1),
+  dis_agua = as.numeric(dis_agua == 1),
+  excus = as.numeric(excus == 1),
+  drenaje = as.numeric(drenaje!=5),
+  servicio_celular =  as.numeric(servicio_celular == 1),
+  servicio_internet = as.numeric(servicio_internet == 1),
+  automovil = as.numeric(automovil == 1),
+  tam_hog = log(1+tam_hog),
+  n_ocup = log(1+n_ocup),
+  max_ed = log(maxnved))
+datos_limpios_x <- datos_limpios_x %>%
+  mutate(max_ed = ifelse(is.na(max_ed), 1, max_ed)) %>%
+  mutate(max_ed_faltante = as.numeric(is.na(max_ed)))
+x_hogar <- model.matrix(~ - 1 + jefe_sexo+ pisos + dis_agua + excus + drenaje +
+    servicio_celular + servicio_internet + automovil + tam_hog + n_ocup +
+    max_ed + max_ed_faltante + n_ocup*max_ed, data = datos_limpios_x)
+  #as.matrix(datos_limpios_x %>% 
+  #                     select(-hogar_id, -geo_id, -ubica_geo, -conapo, -tam_loc, -ingcor))
+geo_id <- datos_limpios_x$geo_id
+```
+
+```{r}
+enigh_mun <- datos_limpios_x %>% group_by(ubica_geo, geo_id) %>% 
+  summarise(conapo = first(conapo), tam_loc = first(tam_loc)) %>%
+  arrange(geo_id) %>% select(-ubica_geo)
+x_mun <- model.matrix(~ -1 + factor(tam_loc)*factor(conapo), data = enigh_mun)
+```
+
+```{r}
+log_ingreso <- log(1+ingreso)
+datos <- list(n = nrow(x_hogar),
+             n_mun = nrow(x_mun),
+             mh = ncol(x_hogar),
+             mm = ncol(x_mun),
+             ingreso = ingreso,
+             x_hogar = x_hogar,
+             x_municipio = x_mun,
+             municipio = geo_id)
+fit <- sampling(mod_ingreso, data = datos, chains = 3, 
+                cores = 3, iter = 800, warmup = 400, control=list(max_treedepth=12))
+```
+
+```{r}
+rstan::summary(fit, pars = c("beta", "alpha", "beta_0", "sigma", "sigma_mun"))$summary
+```
