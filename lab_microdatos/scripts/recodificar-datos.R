@@ -31,7 +31,7 @@ recodificar_personas <- function(datos_personas) {
     select(ID_VIV, SEXO, EDAD, PARENT, HLENGUA, NIVACAD, CONACT) %>%
     mutate_if(is.factor, as.character) %>% 
     mutate(id_viv = ID_VIV,
-      sexo = ifelse(SEXO == 3, 2, SEXO),
+      sexo = ifelse(SEXO == 3, 2, 1),
       edad = as.integer(EDAD),
       niv_acad = case_when(
         is.na(NIVACAD) ~ 0,
@@ -45,12 +45,12 @@ recodificar_personas <- function(datos_personas) {
         NIVACAD == "10" ~ 8,
         NIVACAD == "11" ~ 9,
         NIVACAD == "12" ~ 10,
-        TRUE ~ NA
+        TRUE ~ NA_real_
     ),
     ocupado = ifelse(edad > 13 & CONACT %in% c('1', '2'), 1, 0)
       ) %>%
   group_by(id_viv) %>%
-  summarise(jefe_sexo = first((sexo - 1) * (PARENT == '01')),
+  summarise(jefe_sexo = sum((sexo - 1) * (PARENT == '01')),
     n_ocup = sum(ocupado),
     maxnved = max(niv_acad, na.rm = TRUE),
     maxnved = ifelse(maxnved == Inf | maxnved == -Inf, NA, maxnved),
