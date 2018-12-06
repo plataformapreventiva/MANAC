@@ -4,12 +4,11 @@ library(tidyverse)
 library(rstan)
 library(emdbook)
 
-enigh_2010 <- read_csv("datos/base_final.csv")
+enigh_2010 <- read_csv("datos/enigh_final.csv")
 
 mod_carencia <- stan_model(file = "modelos/src/carencia_binomial.stan")
 
-datos_mun <- read_csv("datos/tabla_municipios.csv") %>% 
-  rename(ubica_geo = cve_muni) %>% 
+datos_mun <- read_csv("lab_microdatos/data/datos_mun.csv") %>% 
   mutate(grado_marg = case_when(grado_marginacion == "Muy alto" ~ 1,
                                 grado_marginacion == "Alto" ~ 2, 
                                 grado_marginacion == "Medio" ~ 3, 
@@ -37,13 +36,14 @@ source("modelos/funciones.R")
 #  1. Seleccionamos 500 municipios.
 #  2. Seleccionamos 10,000 hogares dentro de los municipios del paso 1
 #     el tamaño de muestra varía a lo largo de los municipios.
-set.seed(182791)
-in_sample_mun_ids <- sample(unique(enigh_2010$ubica_geo.y), 500)
 
-enigh_2010 <- enigh_2010 %>% 
-  mutate(ubica_geo = ubica_geo.y,
-         tam_loc = tam_loc.y,
-         ingcor = ingcor.y)
+
+# enigh_2010 <- enigh_2010 %>% 
+#   mutate(ubica_geo = ubica_geo.y,
+#          tam_loc = tam_loc.y,
+#          ingcor = ingcor.y)
+set.seed(182791)
+in_sample_mun_ids <- sample(unique(enigh_2010$ubica_geo), 500)
 
 in_sample_ids <- enigh_2010 %>%
   filter(ubica_geo %in% in_sample_mun_ids) %>% 
@@ -59,25 +59,24 @@ datos_mun <- datos_mun %>%
 datos <- preparar_datos(datos_enigh = enigh_train, in_sample_ids, covs_mun = FALSE)
 
 num_carencias <- get_num_personas_carencias(enigh_train = enigh_train, 
-                                            datos_limpios_hogar = datos$datos_hogar)
+                                            datos_hogar = datos$datos_hogar)
 
 
-datos_train <- list(n = ,
-              n_mun = ,
-              mh = ,
-              mm = ,
-              x_hogar = ,
-              x_municipio = ,
-              municipio = datos$datos_modelo$municipio,
-              n_personas = num_carencias_train_x$total_personas,
-              n_carencia = num_carencias_train_x$n_personas)
+datos_train <- list(n = datos$datos_modelo$n,
+                    n_mun = datos$datos_modelo$n_mun,
+                    mh = datos$datos_modelo$mh,
+                    mm = datos$datos_modelo$mm,
+                    x_hogar = datos$datos_modelo$x_hogar,
+                    x_municipio = datos$datos_modelo$x_municipio,
+                    municipio = datos$datos_modelo$municipio,
+                    n_personas = num_carencias$total_personas,
+                    n_carencia = num_carencias$n_personas)
 
-# Ajuste de parametros: 35 minutos
+# Ajuste de parametros: 25 minutos
 fit <- sampling(mod_carencia, data = datos_train, chains = 3, 
                 cores = 12, iter = 800, warmup = 400, control=list(max_treedepth=12))
+save(fit, file = "fit_c_seg_soc.RData")
 
-# Operaciones matriciales para hacer la predicción
-# convertir a matrices para hacer las estimaciones
 sims_alpha <- as.matrix(fit, pars = c("alpha")); dim(sims_alpha)
 sims_sigma_mun <- as.matrix(fit, pars = c("sigma_mun")); dim(sims_sigma_mun)
 sims_beta_mun_raw <- as.matrix(fit, pars = c("beta_mun_raw")); dim(sims_beta_mun_raw)
@@ -116,6 +115,67 @@ beta_binomial_sim <- function(i){
 y_sim <- map_int(.x = 1:length(prob), .f = beta_binomial_sim)
 table(y_sim)
 
+# Predicciones matriciales
+extract_fit <- extract(fit, permuted = TRUE)
+beta_mun <- extract_fit$beta_mun
+beta_0 <- extract_fit$beta_0 
+beta <- extract_fit$beta
+sigma <- extract_fit$sigma
+rho <- extract_fit$rho
+
+save(beta_mun, beta_0, beta, sigma, 
+     file = "../lab_microdatos/data/simulaciones_parametros.RData")
+
+# reg_prob = inv_logit(beta_0 + x_hogar * beta + beta_mun[municipio]) ;
+n_pred <- nrow(x_hogar)
+n_sims <- length(beta_0)
+beta_0_mat <- matrix(beta_0, nrow = n_pred, ncol = n_sims, 
+                     byrow = TRUE)
+beta_mun_mat <- matrix(t(beta_mun)[municipio, ], nrow = n_pred, ncol = n_sims, 
+                       byrow = TRUE)
+eta <- beta_0_mat + x_hogar %*% t(beta) + beta_mun_mat
+invlogit <- function(x){
+  exp(x)/(1+exp(x))
+}
+reg_prob <- invlogit(eta)
+# a = reg_prob * ((1-rho)/rho);
+rho_mat <- matrix(rho, nrow = n_pred, ncol = n_sims, byrow = T)
+a <- reg_prob / ((1 - rho_mat)/rho_mat)
+# b = a .* (1.0 - reg_prob)./reg_prob;
+b <- a * ((1 - reg_prob)/reg_prob)
+mu = a / (a + b)
+M = a + b
+
+rbbinom <- function(n, size, mu, M){
+  alpha <- mu * M
+  beta <- M * (1 - mu)
+  theta <- rbeta(n, alpha, beta)
+  k <- rbinom(n=n, size=size, theta)
+  k
+}
+
+# sims <- map(.x = 1:n_pred, .f = function(x){
+#   rbbinom(n = n_sims, size = num_carencias$total_personas[x], mu = mu[x,], M = M[x,])
+# })
+# 
+# sims <- Reduce(f = c, x = sims)
+# sims <- matrix(sims, nrow = n_pred, ncol = n_sims)
+
+# Paralelizacion
+library(doSNOW)
+library(foreach)
+library(parallel)
+numCores <- detectCores()
+cl<-makeCluster(8) 
+registerDoSNOW(cl)
+
+sims <- matrix(nrow = n_pred, ncol = n_sims)
+foreach(i=1:n_pred, .combine = "rbind") %dopar% {
+  rbbinom(n = n_sims, size = num_carencias$total_personas[x], mu = mu[x,], M = M[x,])
+}
+
+stopCluster(cl)
 
 
+colnames(sims_agebs) <- paste0('sim_',1:n_sims)
 

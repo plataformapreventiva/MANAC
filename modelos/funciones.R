@@ -27,21 +27,42 @@ preparar_datos <- function(datos_enigh, in_sample_ids, covs_mun = TRUE){
       in_sample = hogar_id %in% in_sample_ids
     ) %>% 
     arrange(desc(in_sample))
+<<<<<<< HEAD
+  f <- ~ jefe_sexo + pisos + dis_agua + excus + 
+    drenaje + servicio_celular + servicio_internet + automovil + tam_hog +
+    n_ocup + max_ed + n_ocup * max_ed + tam_loc
+  vars <- str_split(as.character(f)[2], '\\+')
+  vars <- map_chr(vars[[1]], function(x){ifelse(str_detect(x, '\\*'), '', str_squish(x))})
+  datos_hogar_completos <- datos_limpios_hogar %>% 
+    dplyr::select(one_of(c("hogar_id","ubica_geo","ingcor",vars))) %>%
+    na.omit
+  datos_hogar_completos
+  x_hogar <- model.matrix(f, data = datos_hogar_completos)
+=======
   x_hogar <- model.matrix(~ jefe_sexo + pisos + dis_agua + excus + 
                             drenaje + servicio_celular + servicio_internet + automovil + tam_hog +
                             n_ocup + max_ed + n_ocup * max_ed + tam_loc,# + indigena, 
                           data = datos_limpios_hogar)
+>>>>>>> e60d79c0769783eb862a464477125806fb9770c4
   x_hogar <- x_hogar[, colnames(x_hogar) != "(Intercept)"]
   if (covs_mun) {
     x_mun <- model.matrix(~ factor(tam_mun) * factor(grado_marg), 
                           data = datos_mun)
     x_mun <- x_mun[, colnames(x_mun) != "(Intercept)"]
   } else {
+<<<<<<< HEAD
+    x_mun <- model.matrix(~ 1 + factor(grado_marg), data = datos_mun) 
+    x_mun <- x_mun[, colnames(x_mun) != "(Intercept)"]
+  }
+  ind_mun <- select(datos_mun, ubica_geo, in_sample_mun, ubica_geo_int)
+  datos_hogar_completos <- datos_hogar_completos %>% 
+=======
     x_mun <- model.matrix(~ 1 + factor(grado_marg), data = datos_mun)  
     x_mun <- x_mun[, colnames(x_mun) != "(Intercept)"]
   }
   ind_mun <- select(datos_mun, ubica_geo, in_sample_mun, ubica_geo_int)
   datos_limpios_hogar <- datos_limpios_hogar %>% 
+>>>>>>> e60d79c0769783eb862a464477125806fb9770c4
     left_join(ind_mun, by = "ubica_geo")
   n <- nrow(x_hogar)
   n_mun <- nrow(x_mun)
@@ -50,6 +71,21 @@ preparar_datos <- function(datos_enigh, in_sample_ids, covs_mun = TRUE){
     n_mun = n_mun,
     mh = ncol(x_hogar),
     mm = ncol(x_mun),
+<<<<<<< HEAD
+    ingreso = datos_hogar_completos$ingcor,
+    x_hogar = x_hogar,
+    x_municipio = x_mun,
+    municipio = datos_hogar_completos$ubica_geo_int 
+  )
+  return(list(datos_modelo = datos_modelo, ind_mun = ind_mun, 
+              datos_hogar = datos_hogar_completos, 
+              log_ingreso = log(datos_hogar_completos$ingcor + 1)))
+}
+
+get_num_personas_carencias <- function(enigh_train, datos_hogar){
+  datos_hogar %>% 
+    left_join(enigh_train %>% select(hogar_id, total_personas, ic_seguridad_social),
+=======
     ingreso = datos_limpios_hogar$ingcor,
     x_hogar = x_hogar,
     x_municipio = x_mun,
@@ -63,6 +99,7 @@ preparar_datos <- function(datos_enigh, in_sample_ids, covs_mun = TRUE){
 get_num_personas_carencias <- function(enigh_train, datos_limpios_hogar){
   datos_limpios_hogar %>% 
     left_join(enigh_train %>% select(hogar_id, ic_alimentacion),
+>>>>>>> e60d79c0769783eb862a464477125806fb9770c4
               by = "hogar_id") %>%
     mutate(n_personas = round(total_personas * ic_seguridad_social), 0) %>%
     select(hogar_id, total_personas, n_personas)
