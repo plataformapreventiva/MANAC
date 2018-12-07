@@ -171,11 +171,24 @@ registerDoSNOW(cl)
 
 sims <- matrix(nrow = n_pred, ncol = n_sims)
 foreach(i=1:n_pred, .combine = "rbind") %dopar% {
-  rbbinom(n = n_sims, size = num_carencias$total_personas[x], mu = mu[x,], M = M[x,])
+  sims[i,] <- rbbinom(n = n_sims, size = num_carencias$total_personas[i], mu = mu[i,], M = M[i,])
 }
 
 stopCluster(cl)
 
+colnames(sims) <- paste0('sim_',1:n_sims)
 
-colnames(sims_agebs) <- paste0('sim_',1:n_sims)
+
+                                                                                                                           
+
+
+
+
+
+
+
+
+
+
+
 

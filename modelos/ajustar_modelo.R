@@ -87,7 +87,7 @@ fit <- sampling(mod_ingreso, data = datos$datos_modelo, chains = 2,
 save(fit, file = "fit.RData")
 extract_fit <- extract(fit, permuted = TRUE)
 beta_mun <- extract_fit$beta_mun
-beta_0 <- extract_fit$beta_0 
+beta_0 <- extract_fit$beta_0
 beta <- extract_fit$beta
 sigma <- extract_fit$sigma
 
