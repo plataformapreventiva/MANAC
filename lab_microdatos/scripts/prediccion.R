@@ -1,7 +1,6 @@
-load("../data/simulaciones_parametros.RData")
-datos_mun <- read_csv("../data/datos_mun.csv")
+load("Z:/Procesamiento/Trabajo/lab_microdatos/data/simulaciones_parametros.RData")
 
-# sería bueno instalar fs para que los paths funcionen en cualquier OS
+# seria bueno instalar fs para que los paths funcionen en cualquier OS
 predice_mun <- function(mat, path_save = "../salidas/") {
   x_hogar <- mat$x_hogar
   mun <- mat$ids[1] %>% substr(1, 5)
@@ -13,13 +12,23 @@ predice_mun <- function(mat, path_save = "../salidas/") {
   beta_mun_mat <- matrix(t(beta_mun)[municipio, ], nrow = n_pred, ncol = n_sims, 
     byrow = TRUE)
   medias <- beta_0_mat + x_hogar %*% t(beta) + beta_mun_mat
+  rm(beta_0_mat, beta_mun_mat)
   sims <- apply(medias, 1, function(x) rnorm(n_sims, mean = x, sd = sigma))
+  rm(medias)
+  sims <- exp(sims)
   simulaciones_ageb <- data.frame(ageb = mat$ids, sims = t(sims)) %>% 
     gather(n_sim, sim_ingreso, -ageb) %>% 
-    mutate(sim_ingreso = exp(sim_ingreso)) %>% 
+    mutate(n_sim = readr::parse_number(str_remove(n_sim,"sims\\."))) %>% 
     group_by(ageb, n_sim) %>% 
     summarise(n = n(), ingreso_medio = mean(sim_ingreso))
-  write_csv(simulaciones_ageb, path = paste0(path_save, mun, ".csv"))
+  rm(sims)
+
+  if(path_save == "../salidas/"){
+    path_save <- paste0(path_save, mun, ".csv")
+  }
+  write_csv(simulaciones_ageb, path = path_save)
+  
+  return(T)
 }
 
 procesa_mun <- function(viviendas, personas, mun, path_salida = "../salidas/") {
