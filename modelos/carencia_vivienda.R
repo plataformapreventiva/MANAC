@@ -4,7 +4,7 @@ library(tidyverse)
 library(rstan)
 library(emdbook)
 
-enigh_2010 <- read_csv("datos/enigh_final.csv")
+enigh_2010 <- read_csv("datos/enigh_raw.csv")
 
 mod_carencia <- stan_model(file = "modelos/src/carencia_binomial.stan")
 
@@ -56,7 +56,7 @@ enigh_train <- enigh_2010 %>%
 datos_mun <- datos_mun %>%
   mutate(in_sample_mun = ubica_geo %in% in_sample_mun_ids)
 
-datos <- preparar_datos(datos_enigh = enigh_train, in_sample_ids, covs_mun = FALSE)
+datos <- preparar_datos_car(datos_enigh = enigh_train, in_sample_ids, covs_mun = FALSE)
 
 num_carencias <- get_num_personas_carencias(enigh_train = enigh_train, 
                                             datos_hogar = datos$datos_hogar)
@@ -75,6 +75,7 @@ datos_train <- list(n = datos$datos_modelo$n,
 # Ajuste de parametros: 25 minutos
 fit <- sampling(mod_carencia, data = datos_train, chains = 3, 
                 cores = 12, iter = 800, warmup = 400, control=list(max_treedepth=12))
+
 save(fit, file = "fit_c_seg_soc.RData")
 
 sims_alpha <- as.matrix(fit, pars = c("alpha")); dim(sims_alpha)
@@ -124,7 +125,7 @@ sigma <- extract_fit$sigma
 rho <- extract_fit$rho
 
 save(beta_mun, beta_0, beta, sigma, 
-     file = "../lab_microdatos/data/simulaciones_parametros.RData")
+     file = "../lab_microdatos/data/sims_params_carencia.RData")
 
 # reg_prob = inv_logit(beta_0 + x_hogar * beta + beta_mun[municipio]) ;
 n_pred <- nrow(x_hogar)
@@ -177,18 +178,3 @@ foreach(i=1:n_pred, .combine = "rbind") %dopar% {
 stopCluster(cl)
 
 colnames(sims) <- paste0('sim_',1:n_sims)
-
-
-                                                                                                                           
-
-
-
-
-
-
-
-
-
-
-
-

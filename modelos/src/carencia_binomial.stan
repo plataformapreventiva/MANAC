@@ -41,19 +41,19 @@ model {
   // nivel hogar, por ejemplo acceso a salud
   n_carencia ~ beta_binomial(n_personas, a, b);
   beta_0 ~ normal(0, 2);
-  beta ~ normal(0, 1);
+  beta ~ normal(0, 2);
   //sigma ~ normal(0,1);
   beta_mun_raw ~ normal(0, 1);
   sigma_mun ~ normal(0, 1);
-  alpha ~ normal(0, 1);
+  alpha ~ normal(0, 2);
   rho ~ beta(1, 1);
   
 }
 
 generated quantities {
- vector[n] num_reps ;
+ //vector[n] num_reps ;
 
- for(i in 1:n){
-   num_reps[i] = beta_binomial_rng(n_personas[i], a[i], b[i]);
- }
+ //for(i in 1:n){
+ //  num_reps[i] = beta_binomial_rng(n_personas[i], a[i], b[i]);
+ //}
 }
