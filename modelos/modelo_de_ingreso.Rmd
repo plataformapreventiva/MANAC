@@ -654,8 +654,6 @@ ggplot(betas_stats, aes(x = reorder(geo_id, media), y = media,
 log_ingreso <- log(1 + datos$datos_modelo$ingreso)
 shinystan::launch_shinystan(fit)
 
-
 rstan::summary(fit, pars = c("log_reps"))$summary
 
 ```
-
