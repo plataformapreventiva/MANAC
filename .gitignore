@@ -27,3 +27,4 @@
 **/.Rproj.user
 .Rproj.user
 
+packrat/lib*/

@@ -103,8 +103,8 @@ mm <- datos$datos_modelo$mm
 inits <- list(beta_0 = 0, beta = rnorm(n = mh), beta_mun_raw = rnorm(n = 2457),
               sigma_mun = 0.1, alpha = rnorm(n = mm), rho = 0.3)
 
-fit <- sampling(mod_carencia, data = datos$datos_modelo, chains = 1, 
-                cores = 1, iter = 800, warmup = 400, control=list(max_treedepth=12))#,
+fit <- sampling(mod_carencia, data = datos$datos_modelo, chains = 8, 
+                cores = 8, iter = 800, warmup = 400, control=list(max_treedepth=12))#,
                 #init_r = 3,
                 #init = inits)
 
