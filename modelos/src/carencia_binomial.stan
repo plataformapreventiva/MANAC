@@ -30,11 +30,13 @@ transformed parameters {
   vector[n_mun] beta_mun;
   vector<lower=0>[n] a;
   vector<lower=0>[n] b;
+  real<lower = 0> phi;
   
   beta_mun = beta_mun_raw * sigma_mun + x_municipio * alpha;
   reg_prob = inv_logit(beta_0 + x_hogar * beta + beta_mun[municipio]) ;
-  a = reg_prob * ((1-rho)/rho);
-  b = a .* (1.0 - reg_prob)./reg_prob;
+  phi = (1 - rho) / rho;
+  a = reg_prob * phi ;
+  b = (1 - reg_prob) * phi;
 }
 
 model {
@@ -51,9 +53,8 @@ model {
 }
 
 generated quantities {
- //vector[n] num_reps ;
-
- //for(i in 1:n){
- //  num_reps[i] = beta_binomial_rng(n_personas[i], a[i], b[i]);
- //}
+  vector[n] num_reps ;
+  for(i in 1:n){
+    num_reps[i] = beta_binomial_rng(n_personas[i], a[i], b[i]);
+  }
 }
